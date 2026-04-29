@@ -1,0 +1,64 @@
+---
+import StatusBadge from "./StatusBadge.astro";
+
+interface Props {
+  slug: string;
+  title: string;
+  specimenNumber: string;
+  classification: string;
+  excerpt: string;
+  status: "active" | "in-progress" | "dormant" | "shipped";
+  firstObserved: string;
+  heroImage?: string;
+}
+
+const { slug, title, specimenNumber, classification, excerpt, status, firstObserved, heroImage } = Astro.props;
+---
+
+<a href={`/specimens/${slug}`} class="block group">
+  <article class="specimen-card p-4 sm:p-5 h-full flex flex-col">
+    <span class="bracket-bl"></span>
+    <span class="bracket-br"></span>
+
+    <div class="aspect-[3/4] w-full overflow-hidden bg-[color:var(--color-paper-deep)] relative">
+      {heroImage ? (
+        <img
+          src={heroImage}
+          alt=""
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+          loading="lazy"
+        />
+      ) : (
+        <div class="w-full h-full topo flex items-center justify-center">
+          <span class="field-title text-5xl text-[color:var(--color-bark)] opacity-50">
+            {specimenNumber}
+          </span>
+        </div>
+      )}
+    </div>
+
+    <div class="mt-4 flex flex-col flex-1">
+      <div class="flex items-center gap-2 label-bark">
+        <span>Specimen №{specimenNumber}</span>
+        <span class="flex-1 h-px bg-[color:var(--color-rule)]"></span>
+      </div>
+
+      <h3 class="font-[family-name:var(--font-display)] text-2xl mt-2 leading-tight group-hover:text-[color:var(--color-bark)] transition-colors">
+        {title}
+      </h3>
+
+      <p class="text-[color:var(--color-ink-soft)] text-sm mt-1 italic">
+        {classification}
+      </p>
+
+      <p class="text-[color:var(--color-ink)] text-[0.95rem] mt-3 leading-relaxed flex-1">
+        {excerpt}
+      </p>
+
+      <div class="mt-4 pt-3 border-t border-dotted border-[color:var(--color-rule)] flex items-center justify-between text-xs">
+        <StatusBadge status={status} />
+        <span class="label">First obs. {firstObserved}</span>
+      </div>
+    </div>
+  </article>
+</a>

@@ -1,0 +1,16 @@
+---
+interface Props {
+  variant?: "thin" | "thick" | "leaf";
+  label?: string;
+}
+const { variant = "thin", label } = Astro.props;
+---
+
+{variant === "thin" && <div class="ruled my-6"></div>}
+{variant === "thick" && <div class="ruled-thick my-8"></div>}
+{variant === "leaf" && (
+  <div class="leaf-divider my-10 label-bark">
+    {label && <span>{label}</span>}
+    {!label && <span aria-hidden="true">❦</span>}
+  </div>
+)}

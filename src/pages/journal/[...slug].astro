@@ -1,0 +1,84 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const entries = (await getCollection("journal")).sort(
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+  );
+  return entries.map((entry, i) => {
+    const newer = i > 0 ? entries[i - 1] : null;
+    const older = i < entries.length - 1 ? entries[i + 1] : null;
+    return {
+      params: { slug: entry.id },
+      props: { entry, newer, older },
+    };
+  });
+}
+
+const { entry, newer, older } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await render(entry);
+const { data } = entry;
+
+const formattedDate = new Date(data.date).toLocaleDateString("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
+});
+
+const minutesRead = remarkPluginFrontmatter?.minutesRead;
+---
+
+<BaseLayout title={`${data.title} — Field Journal — Giffenlabs`} description={data.excerpt}>
+  {data.heroImage && (
+    <section class="w-full h-[60vh] bg-[color:var(--color-paper-deep)] overflow-hidden">
+      <img src={data.heroImage} alt="" class="w-full h-full object-cover" />
+    </section>
+  )}
+
+  <article class="max-w-3xl mx-auto px-5 sm:px-8 pt-14 pb-24">
+    <p class="label-bark">Field Journal</p>
+
+    <h1 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl mt-3 leading-tight">
+      {data.title}
+    </h1>
+
+    <div class="mt-4 label flex items-center gap-3">
+      <span>{formattedDate}</span>
+      {minutesRead && (
+        <>
+          <span class="opacity-50">·</span>
+          <span>{minutesRead}</span>
+        </>
+      )}
+    </div>
+
+    <div class="ruled mt-8 mb-10"></div>
+
+    <div class="prose-field">
+      <Content />
+    </div>
+
+    <div class="ruled-thick mt-16 mb-6"></div>
+
+    <nav class="flex justify-between gap-6 label-bark">
+      {older ? (
+        <a href={`/journal/${older.id}`} class="group max-w-[45%]">
+          <span class="block">← Older</span>
+          <span class="block font-[family-name:var(--font-display)] not-italic normal-case tracking-normal text-[color:var(--color-ink)] text-base mt-1 group-hover:text-[color:var(--color-bark)]">
+            {older.data.title}
+          </span>
+        </a>
+      ) : <span></span>}
+      {newer ? (
+        <a href={`/journal/${newer.id}`} class="group text-right max-w-[45%]">
+          <span class="block">Newer →</span>
+          <span class="block font-[family-name:var(--font-display)] not-italic normal-case tracking-normal text-[color:var(--color-ink)] text-base mt-1 group-hover:text-[color:var(--color-bark)]">
+            {newer.data.title}
+          </span>
+        </a>
+      ) : <span></span>}
+    </nav>
+  </article>
+</BaseLayout>

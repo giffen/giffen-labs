@@ -1,0 +1,37 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string; // ISO
+  showMonth?: boolean;
+}
+
+const { slug, title, excerpt, date, showMonth = true } = Astro.props;
+
+const d = new Date(date);
+const month = d.toLocaleString("en-US", { month: "long", timeZone: "UTC" });
+const year = d.getUTCFullYear();
+const day = d.getUTCDate();
+---
+
+<a href={`/journal/${slug}`} class="block group py-7 border-b border-[color:var(--color-rule)]">
+  {showMonth && (
+    <div class="label mb-3 flex items-center gap-3">
+      <span>{month} {year}</span>
+      <span class="flex-1 h-px bg-[color:var(--color-rule)]"></span>
+      <span class="opacity-60">№ {String(day).padStart(2, "0")}</span>
+    </div>
+  )}
+
+  <div class="flex items-start gap-4">
+    <h3 class="font-[family-name:var(--font-display)] text-2xl sm:text-3xl leading-tight flex-1 group-hover:text-[color:var(--color-bark)] transition-colors">
+      {title}
+    </h3>
+    <span class="font-[family-name:var(--font-display)] text-2xl text-[color:var(--color-ochre)] mt-1 transition-transform group-hover:translate-x-1">→</span>
+  </div>
+
+  <p class="text-[color:var(--color-ink-soft)] text-[1rem] mt-2 leading-relaxed max-w-2xl italic">
+    {excerpt}
+  </p>
+</a>

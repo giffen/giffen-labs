@@ -1,0 +1,174 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import StatusBadge from "../../components/StatusBadge.astro";
+
+export async function getStaticPaths() {
+  const specimens = (await getCollection("specimens")).sort((a, b) => {
+    const an = parseInt(a.data.specimenNumber, 10);
+    const bn = parseInt(b.data.specimenNumber, 10);
+    return an - bn;
+  });
+
+  return specimens.map((entry, i) => {
+    const prev = i > 0 ? specimens[i - 1] : null;
+    const next = i < specimens.length - 1 ? specimens[i + 1] : null;
+    return {
+      params: { slug: entry.id },
+      props: { entry, prev, next },
+    };
+  });
+}
+
+const { entry, prev, next } = Astro.props;
+const { Content } = await render(entry);
+const { data } = entry;
+---
+
+<BaseLayout title={`${data.title} — Specimen №${data.specimenNumber} — Giffenlabs`} description={data.excerpt}>
+  <!-- Hero plate: framed like a magnified specimen card -->
+  <section class="w-full bg-[color:var(--color-paper-deep)] border-b border-[color:var(--color-rule)] py-8 sm:py-14">
+    <div class="max-w-5xl mx-auto px-4 sm:px-8">
+      <figure class="specimen-card bg-[color:var(--color-paper)] p-3 sm:p-4">
+        <span class="bracket-bl"></span>
+        <span class="bracket-br"></span>
+
+        <!-- top label rail: gives the plate the feel of being mounted -->
+        <div class="flex items-center gap-3 label-bark px-1 pb-3">
+          <span>Plate I</span>
+          <span class="flex-1 h-px bg-[color:var(--color-rule)]"></span>
+          <span>Specimen №{data.specimenNumber}</span>
+        </div>
+
+        {data.heroImage ? (
+          <img
+            src={data.heroImage}
+            alt={`${data.title} — illustrated plate`}
+            class="block w-full h-auto"
+          />
+        ) : (
+          <div class="aspect-[3/2] topo flex items-center justify-center">
+            <div class="text-center">
+              <p class="label-bark">Specimen</p>
+              <p class="field-title text-[16vw] sm:text-[10rem] leading-none text-[color:var(--color-bark)] opacity-70">
+                №{data.specimenNumber}
+              </p>
+            </div>
+          </div>
+        )}
+
+        <!-- caption rail -->
+        <figcaption class="px-1 pt-3 flex items-center gap-3 label">
+          <span class="flex-1 h-px bg-[color:var(--color-rule)]"></span>
+          <span class="italic font-[family-name:var(--font-display)] tracking-normal normal-case text-[color:var(--color-ink-soft)] text-[0.95rem]">
+            {data.title}
+          </span>
+          <span class="flex-1 h-px bg-[color:var(--color-rule)]"></span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Specimen header -->
+  <section class="max-w-3xl mx-auto px-5 sm:px-8 pt-12">
+    <div class="flex items-center justify-between label-bark">
+      <span>Specimen №{data.specimenNumber}</span>
+      <StatusBadge status={data.status} />
+    </div>
+
+    <div class="ruled-thick mt-3"></div>
+
+    <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl mt-6 leading-tight">
+      {data.title}
+    </h1>
+
+    <p class="mt-3 italic text-[color:var(--color-ink-soft)] text-lg">
+      {data.excerpt}
+    </p>
+
+    <div class="ruled mt-8"></div>
+
+    <!-- Taxonomy table -->
+    <dl class="mt-6 grid grid-cols-[max-content_1fr] gap-x-6 gap-y-2.5 text-sm">
+      <dt class="label">Class</dt>
+      <dd class="font-[family-name:var(--font-display)]">{data.classification}</dd>
+
+      <dt class="label">Habitat</dt>
+      <dd class="font-[family-name:var(--font-display)]">{data.habitat}</dd>
+
+      <dt class="label">First observed</dt>
+      <dd class="font-[family-name:var(--font-display)]">{data.firstObserved}</dd>
+
+      {data.platform.length > 0 && (
+        <>
+          <dt class="label">Platform</dt>
+          <dd class="font-[family-name:var(--font-mono)] text-[color:var(--color-ink-soft)] text-[0.85rem]">
+            {data.platform.join(" · ")}
+          </dd>
+        </>
+      )}
+
+      {data.url && (
+        <>
+          <dt class="label">In the wild</dt>
+          <dd>
+            <a
+              href={data.url}
+              rel="noopener"
+              target="_blank"
+              class="border-b border-[color:var(--color-ochre)] hover:bg-[rgba(139,105,20,0.12)] font-[family-name:var(--font-mono)] text-[0.88rem]"
+            >
+              {data.url.replace(/^https?:\/\//, "")} ↗
+            </a>
+          </dd>
+        </>
+      )}
+    </dl>
+
+    <div class="ruled mt-8"></div>
+  </section>
+
+  <!-- Field notes -->
+  <section class="max-w-3xl mx-auto px-5 sm:px-8 mt-12">
+    <p class="label-bark mb-4">Field Notes</p>
+    <div class="prose-field">
+      <Content />
+    </div>
+  </section>
+
+  <!-- Secondary images -->
+  {data.images.length > 0 && (
+    <section class="max-w-5xl mx-auto px-5 sm:px-8 mt-16">
+      <div class="ruled mb-8"></div>
+      <p class="label-bark mb-6">Plate II — In the field</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {data.images.map((src) => (
+          <img src={src} alt="" class="w-full h-auto border border-[color:var(--color-rule)]" loading="lazy" />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Prev / Next -->
+  <section class="max-w-3xl mx-auto px-5 sm:px-8 mt-20 mb-24">
+    <div class="ruled-thick mb-8"></div>
+    <nav class="flex justify-between gap-6 label-bark">
+      {prev ? (
+        <a href={`/specimens/${prev.id}`} class="group max-w-[45%]">
+          <span class="block">← Specimen №{prev.data.specimenNumber}</span>
+          <span class="block font-[family-name:var(--font-display)] not-italic normal-case tracking-normal text-[color:var(--color-ink)] text-lg mt-1 group-hover:text-[color:var(--color-bark)]">
+            {prev.data.title}
+          </span>
+        </a>
+      ) : <span></span>}
+      {next ? (
+        <a href={`/specimens/${next.id}`} class="group text-right max-w-[45%]">
+          <span class="block">Specimen №{next.data.specimenNumber} →</span>
+          <span class="block font-[family-name:var(--font-display)] not-italic normal-case tracking-normal text-[color:var(--color-ink)] text-lg mt-1 group-hover:text-[color:var(--color-bark)]">
+            {next.data.title}
+          </span>
+        </a>
+      ) : <span></span>}
+    </nav>
+  </section>
+</BaseLayout>

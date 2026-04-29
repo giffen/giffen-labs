@@ -1,0 +1,64 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const journal = (await getCollection("journal")).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+// Group by month-year
+const groups = new Map<string, typeof journal>();
+for (const entry of journal) {
+  const d = new Date(entry.data.date);
+  const key = `${d.getUTCFullYear()}-${String(d.getUTCMonth()).padStart(2, "0")}`;
+  if (!groups.has(key)) groups.set(key, []);
+  groups.get(key)!.push(entry);
+}
+
+const orderedGroups = Array.from(groups.entries()).map(([key, entries]) => {
+  const [year, month] = key.split("-").map(Number);
+  const label = new Date(Date.UTC(year, month, 1)).toLocaleString("en-US", {
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+  return { label, entries };
+});
+---
+
+<BaseLayout title="Field Journal — Giffenlabs" description="Long-form notes from the build.">
+  <section class="max-w-3xl mx-auto px-5 sm:px-8 pt-16 pb-8">
+    <p class="label-bark">Section III</p>
+    <h1 class="field-title text-4xl sm:text-6xl mt-3">Field Journal</h1>
+    <p class="mt-6 max-w-2xl font-[family-name:var(--font-display)] italic text-[color:var(--color-ink-soft)] text-lg">
+      Notes, diaries, and tutorials. What I'm building, what I'm
+      stuck on, and what the work has been teaching me.
+    </p>
+    <div class="ruled-thick mt-10"></div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-5 sm:px-8 pb-24">
+    {orderedGroups.map(({ label, entries }) => (
+      <div class="mb-2">
+        <header class="mt-10 mb-2 flex items-center gap-3">
+          <p class="label-bark">{label}</p>
+          <span class="flex-1 h-px bg-[color:var(--color-rule)]"></span>
+        </header>
+
+        {entries.map((j) => (
+          <a href={`/journal/${j.id}`} class="block group py-6 border-b border-[color:var(--color-rule)]">
+            <div class="flex items-start gap-4">
+              <h3 class="font-[family-name:var(--font-display)] text-2xl sm:text-3xl leading-tight flex-1 group-hover:text-[color:var(--color-bark)] transition-colors">
+                {j.data.title}
+              </h3>
+              <span class="font-[family-name:var(--font-display)] text-2xl text-[color:var(--color-ochre)] mt-1 transition-transform group-hover:translate-x-1">→</span>
+            </div>
+            <p class="text-[color:var(--color-ink-soft)] mt-2 italic max-w-2xl">
+              {j.data.excerpt}
+            </p>
+          </a>
+        ))}
+      </div>
+    ))}
+  </section>
+</BaseLayout>

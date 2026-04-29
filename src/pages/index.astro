@@ -1,0 +1,128 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import StatusBadge from "../components/StatusBadge.astro";
+
+const specimens = (await getCollection("specimens")).sort((a, b) => {
+  const an = parseInt(a.data.specimenNumber, 10);
+  const bn = parseInt(b.data.specimenNumber, 10);
+  return an - bn;
+});
+
+const journalAll = (await getCollection("journal")).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+const journal = journalAll.slice(0, 10);
+---
+
+<BaseLayout title="Giffenlabs — Field notes from the build.">
+  <!-- Hero -->
+  <section class="min-h-[calc(100vh-3.5rem)] flex flex-col items-center px-5 sm:px-8 py-12 topo">
+    <div class="flex-1 flex items-center">
+      <div class="text-center max-w-3xl">
+        <img
+          src="/images/brand/giffenlabs-seal-v2-transparent.png"
+          alt="Giffen Labs seal"
+          width="1024"
+          height="1024"
+          class="mx-auto mb-6 w-[60vw] max-w-[320px] sm:w-[300px] select-none"
+          draggable="false"
+        />
+
+        <h1 class="field-title text-[15vw] sm:text-[8rem] leading-[0.9] text-[color:var(--color-ink)]">
+          Giffen<br /><span class="text-[color:var(--color-bark)]">Labs</span>
+        </h1>
+
+        <div class="mt-8 leaf-divider label-bark mx-auto max-w-md">
+          <span>A field guide</span>
+        </div>
+
+        <p class="mt-8 font-[family-name:var(--font-display)] italic text-xl sm:text-2xl text-[color:var(--color-ink-soft)]">
+          Field notes from the build.
+        </p>
+
+        <p class="mt-4 max-w-xl mx-auto text-[color:var(--color-ink-soft)] text-[0.95rem] leading-relaxed">
+          A catalogue of small things made — apps, prototypes, half-finished
+          ideas. Things observed in the wild, sketched in the margins, and
+          sometimes shipped.
+        </p>
+      </div>
+    </div>
+
+    <a href="#index" class="mt-12 label-bark group flex flex-col items-center gap-2">
+      <span>Open the guide</span>
+      <span class="text-2xl text-[color:var(--color-ochre)] group-hover:translate-y-1 transition-transform">↓</span>
+    </a>
+  </section>
+
+  <!-- Index -->
+  <section id="index" class="max-w-6xl mx-auto px-5 sm:px-8 py-20">
+    <div class="text-center mb-12">
+      <p class="label-bark mb-3">Index</p>
+      <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl">Contents</h2>
+      <div class="leaf-divider mx-auto max-w-xs mt-6 label-bark">
+        <span aria-hidden="true">❦</span>
+      </div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-12 sm:gap-16">
+      <!-- Specimens column -->
+      <div>
+        <header class="mb-6 flex items-baseline justify-between border-b-2 border-[color:var(--color-ink)] pb-2">
+          <h3 class="field-title text-sm">Specimens</h3>
+          <a href="/specimens" class="label-bark hover:text-[color:var(--color-bark)]">All →</a>
+        </header>
+
+        <ul class="divide-y divide-[color:var(--color-rule)]">
+          {specimens.map((s) => (
+            <li>
+              <a href={`/specimens/${s.id}`} class="flex items-center gap-3 py-3 group">
+                <span class="label opacity-70 w-8">{s.data.specimenNumber}</span>
+                <div class="flex-1 min-w-0">
+                  <div class="font-[family-name:var(--font-display)] text-lg leading-tight group-hover:text-[color:var(--color-bark)] transition-colors">
+                    {s.data.title}
+                  </div>
+                  <div class="text-xs text-[color:var(--color-ink-soft)] italic truncate">
+                    {s.data.classification}
+                  </div>
+                </div>
+                <StatusBadge status={s.data.status} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Journal column -->
+      <div>
+        <header class="mb-6 flex items-baseline justify-between border-b-2 border-[color:var(--color-ink)] pb-2">
+          <h3 class="field-title text-sm">Field Journal</h3>
+          <a href="/journal" class="label-bark hover:text-[color:var(--color-bark)]">All →</a>
+        </header>
+
+        <ul class="divide-y divide-[color:var(--color-rule)]">
+          {journal.map((j) => {
+            const d = new Date(j.data.date);
+            const m = d.toLocaleString("en-US", { month: "short", timeZone: "UTC" }).toUpperCase();
+            const y = d.getUTCFullYear();
+            return (
+              <li>
+                <a href={`/journal/${j.id}`} class="flex items-start gap-3 py-3 group">
+                  <span class="label opacity-70 whitespace-nowrap pt-1">{m} {y}</span>
+                  <div class="flex-1 min-w-0">
+                    <div class="font-[family-name:var(--font-display)] text-lg leading-tight group-hover:text-[color:var(--color-bark)] transition-colors">
+                      {j.data.title}
+                    </div>
+                    <div class="text-xs text-[color:var(--color-ink-soft)] italic">
+                      {j.data.excerpt}
+                    </div>
+                  </div>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

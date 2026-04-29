@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SpecimenCard from "../../components/SpecimenCard.astro";
+
+const specimens = (await getCollection("specimens")).sort((a, b) => {
+  const an = parseInt(a.data.specimenNumber, 10);
+  const bn = parseInt(b.data.specimenNumber, 10);
+  return an - bn;
+});
+---
+
+<BaseLayout title="Specimens — Giffenlabs" description="A catalogue of projects observed in the wild.">
+  <section class="max-w-6xl mx-auto px-5 sm:px-8 pt-16 pb-10">
+    <p class="label-bark">Section II</p>
+    <h1 class="field-title text-4xl sm:text-6xl mt-3">Specimens</h1>
+    <p class="mt-6 max-w-2xl font-[family-name:var(--font-display)] italic text-[color:var(--color-ink-soft)] text-lg">
+      Projects observed in the wild — apps, tools, prototypes. Some
+      flourishing, some dormant, some still being coaxed into the light.
+    </p>
+    <div class="ruled-thick mt-10"></div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-5 sm:px-8 pb-24">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {specimens.map((s) => (
+        <SpecimenCard
+          slug={s.id}
+          title={s.data.title}
+          specimenNumber={s.data.specimenNumber}
+          classification={s.data.classification}
+          excerpt={s.data.excerpt}
+          status={s.data.status}
+          firstObserved={s.data.firstObserved}
+          heroImage={s.data.heroImage}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

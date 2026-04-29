@@ -1,0 +1,26 @@
+---
+interface Props {
+  status: "active" | "in-progress" | "dormant" | "shipped";
+}
+
+const { status } = Astro.props;
+
+const dotClass = {
+  "active": "status-active",
+  "in-progress": "status-progress",
+  "dormant": "status-dormant",
+  "shipped": "status-shipped",
+}[status];
+
+const label = {
+  "active": "Active",
+  "in-progress": "In Progress",
+  "dormant": "Dormant",
+  "shipped": "Shipped",
+}[status];
+---
+
+<span class="label inline-flex items-center">
+  <span class={`status-dot ${dotClass}`}></span>
+  {label}
+</span>
