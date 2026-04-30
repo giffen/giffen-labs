@@ -18,7 +18,7 @@ platform:
 images: []
 excerpt: A retro RPG that teaches EHS compliance - one auditor, eight facilities,
   global regulations
-url: https://www.giffen.me/lab/audit-quest/
+url: https://www.giffen.me/work/audit-quest/
 ---
 
 ## The Problem

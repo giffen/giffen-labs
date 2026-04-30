@@ -19,6 +19,7 @@ images: []
 excerpt: An automated pipeline that collects environmental enforcement actions from
   23 regulatory sources across 16 jurisdictions, enriches them with Claude, and serves
   them through a PostgreSQL-backed REST API
+url: https://radar.giffen.me/
 ---
 
 ## The Problem
