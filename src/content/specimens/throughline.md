@@ -134,4 +134,4 @@ Built solo with Claude Code, which handled most of the implementation while I dr
 
 Live, deployed, and fully connected — a song-level music graph you drive by naming two songs and watching the annotated bridge between them play out, one explained hop at a time. Still one person's taste, still growing, but it finally does the thing it was always supposed to: it turns "here's more music" into "here's *why*."
 
-Read the [companion essay](/journal/the-dimension-spotify-cant-measure) for the longer story of how this project evolved and what it revealed about music recommendation.
+Two companion essays: [The Dimension Spotify Can't Measure](/journal/the-dimension-spotify-cant-measure) for what building it revealed about music recommendation, and [The Bridge Machine](/journal/the-bridge-machine) for how a finished-but-not-landing product got reframed into what it is now.
