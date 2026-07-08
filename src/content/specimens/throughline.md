@@ -4,7 +4,7 @@ specimenNumber: '02'
 classification: Music Recommendation Graph
 habitat: throughline.giffen.me
 firstObserved: '2026'
-status: in-progress
+status: active
 heroImage: /images/specimens/throughline-hero.png
 platform:
 - music
