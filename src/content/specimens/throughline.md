@@ -71,9 +71,19 @@ Meanwhile the one thing the project could do that Spotify structurally cannot �
 
 So I flipped it. The homepage is now a **bridge machine**: name two songs, and Throughline plays you the shortest route between them as a cinematic, auto-advancing journey. Each song holds the stage for a beat, the reason it connects to the next one animates in, and it drifts onward. *Car → Just Like Heaven → Here's Where the Story Ends → Alison → Digital Bath → Change* — jangle-pop dissolving into Deftones across five hops, and every hop tells you why. Search still exists; it's just demoted to the deep-dive mode it always should have been.
 
+![The home is now a bridge machine — name two songs and it builds the route between them](/images/specimens/throughline/landing-composer.jpg)
+
 The timing engine is deliberately **decoupled from the audio**: a hop advances on its own clock, so a missing track or a browser that blocks autoplay never stalls a live walkthrough — there's a one-click start as the fallback. It's the difference between a demo that always runs and a demo that runs if the network cooperates.
 
+![A journey playing — each song holds the stage while the reason it connects to the next one animates in](/images/specimens/throughline/journey-theater.png)
+
 The last piece was making journeys **leave the tab**. Each one gets a permalink — `/j/{from}/{to}` — that boots straight into the theater, and, because link unfurlers don't run JavaScript, a server route renders the Open Graph tags *and* a 1200×630 preview card (drawn with Pillow, no headless browser, so it renders anywhere the app runs). Paste a journey into Slack or iMessage and it unfurls into a card: the two endpoints, the hop count, the first reason, the tagline. A journey you make is now a link you can send.
+
+![The server-rendered unfurl card for a shared journey](/images/specimens/throughline/share-card.png)
+
+The whole surface got a visual identity to match the idea, too — a dark, editorial look with a display serif and an atmospheric field behind the composer. And the deep-dive mode renders the full graph as a browsable **constellation**, where the same-artist scaffolding is faded to threads and the dimension-coloured similarity edges become the structure you actually see.
+
+![The full graph as a browsable constellation — the dimension-coloured similarity edges are the structure](/images/specimens/throughline/graph-constellation.jpg)
 
 ## What I Built
 
@@ -88,6 +98,7 @@ The last piece was making journeys **leave the tab**. Each one gets a permalink 
 - **Natural-language search** — "sad music I can dance to" / "guitars like Johnny Marr." Claude Haiku parses intent into dimension filters; the LLM never writes a line of Cypher, it only fills an allow-listed template
 - **"Songs like X"** — IDF-weighted shared-dimension traversal that shows you *which* dimensions matched, not just a score
 - **Pathfinding & playlists** — shortest annotated path between endpoints, and a longer playlist that picks the most artist-diverse route so it doesn't funnel through hub songs
+- **Constellation explorer** — the whole graph as a force-directed star field, coloured by dimension, that you can search and traverse
 
 **The workshop**
 - An admin inspector for auditing every LLM-assigned dimension and edge, with gold/bad labeling for building an eval set
