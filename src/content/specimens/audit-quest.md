@@ -83,6 +83,33 @@ The NPCs got the same treatment, with a bug worth confessing: the first pass ass
 
 For assets that need more fidelity than tiles—the title screen, encounter scene illustrations, victory screens—I used AI image generation through Replicate's FLUX 1.1 Pro Ultra model and Stability AI, driven over MCP.
 
+## Bringing the Floors to Life
+
+Once the rooms and characters looked right, they felt dead. So a July pass made the world move: NPCs wander a couple of tiles around their posts (the ones blocking a chokepoint just glance at you), idle animations play on the player and NPCs, and equipment got per-frame effects: monitors flicker, server-rack LEDs blink, steam drifts off kitchen gear, welding stations throw sparks. A Canvas2D lightmap adds per-facility ambient light, glowing equipment and doors, and a small pool of light that follows the auditor. Each facility got its own exploration music (industrial, lab, construction site).
+
+I also looked into moving to LimeZu's 32x32 packs for more resolution and rejected it. Their characters turned out to be pixel-identical to a 2x nearest-neighbour upscale of the 16px art, so the migration would have cost a day of asset work for no visible gain.
+
+## The Polish Pass, and Two Frontier Models
+
+In September I handed the game to the newest models from both labs, which I wrote up separately in [Two Frontier Models, One Pixel Auditor](/journal/two-frontier-models-one-pixel-auditor). The brief to OpenAI's Codex was "Super Nintendo Pokémon vibe, better music and sound," with one hard constraint added after the first attempt: *it still has to be an EHS audit game.*
+
+What came out of it:
+
+- **Presentation.** Cream-and-indigo RPG dialogue windows, sprite portraits, clipboard markers on inspectable objects, a minimap with a viewport outline, and touch controls with reduced-motion support.
+- **Sound.** An original 16-bar title theme and distinct cues for selection, dialogue, discovery, doors and results. All of it is synthesized live with Web Audio. There are no audio files and no new dependencies.
+- **Scene polish.** Floor materials are mapped properly (carpet, stone, timber, lab vinyl, access flooring, rubber, metal grating). Shared palettes tie wall finishes and ambient light together for offices, clinical sites and industrial sites. Shadows are baked once per room instead of per frame.
+- **A bug that blocked everything.** After the first pass, no facility would load. The layout fix did not help. The real cause was a Firefox-only crash: the new music fade called `AudioParam.cancelAndHoldAtTime`, which Firefox doesn't implement, and the exception unmounted the whole game.
+
+Then came a full play-through and an EHS content review. An agent completed Story Mode in Firefox (8 facilities, 110 inspections, 650 credibility, a 1,100-point score), deliberately lost once, and checked retry and partial scoring. It was answer-key-assisted automated play rather than a blind human playtest, and its notes say so. The findings drove a round of fixes:
+
+- The final report grouped mistakes by the category the player *chose* instead of the real one, so first-phase misses vanished and the denominators were wrong. Results now keep their true category, and the report separates decision accuracy from classification accuracy.
+- Completed Practice facilities can be replayed, and every end state has a way out.
+- The portrait-mode report and feedback panel were clipped. They now stack and scroll.
+- One facility's scene images lived outside the served directory and 404'd in production while working fine in development. They were moved and verified live.
+- Several explanations in the answer key overstated or misattributed a rule. Seven scenarios were corrected, and the game now shows source and scope text on feedback, with unreviewed references clearly marked as awaiting review. Completion is no longer presented as competence.
+
+Three Playwright regression suites came out of this (`test:entry`, `test:gameplay`, `test:scene`). They cover facility entry in Chromium and Firefox at desktop, short-landscape and portrait sizes, the reducer and report logic, and all 22 floor materials.
+
 ## What We Built
 
 **11 game screens** forming a complete game loop:
@@ -91,10 +118,10 @@ For assets that need more fidelity than tiles—the title screen, encounter scen
 - A character creator that composites your auditor—skin tone, outfit, hair, glasses, hard hat—into the actual in-game sprite sheet
 - Street Fighter 2-style world map with 8 facility markers and cross-platform flag emojis
 - Flight animation with jurisdiction briefing
-- Top-down facility exploration with real-time movement across each facility's continuous floor
+- Top-down facility exploration with real-time movement across each facility's continuous floor, wandering NPCs, animated equipment and dynamic lighting
 - Two-phase encounter battle system (spot the violation, then classify it)
 - Facility summary with real-world fun facts for each location
-- Score-dependent game over and victory screens with AI-generated art (4 tiers from "Clipboard Carrier" to "Legendary Auditor")
+- Score-dependent game over and victory screens (4 tiers from "Clipboard Carrier" to "Legendary Auditor"), with a final report that separates decision accuracy from classification accuracy
 
 **8 fully playable facilities across 3 continents:**
 1. London Office — corporate headquarters with server room, meeting room, kitchen
@@ -106,7 +133,7 @@ For assets that need more fidelity than tiles—the title screen, encounter scen
 7. Osaka Chemical Lab — hazmat handling, fume hoods, waste management
 8. Shanghai Food Processing — cold storage, production lines, sanitation zones
 
-Each facility has 4-5 interconnected rooms, 14 encounters, AI-generated scene illustrations, and jurisdiction-specific compliance scenarios.
+Each facility has 4-5 interconnected rooms, 12-14 encounters (110 playable in total), AI-generated scene illustrations, and jurisdiction-specific compliance scenarios.
 
 **A tile-based rendering engine with a programmatic safety net:**
 - Rooms bake to a static layer from LimeZu wall and floor tiles at exact 2x integer scale
@@ -114,6 +141,10 @@ Each facility has 4-5 interconnected rooms, 14 encounters, AI-generated scene il
 - ~80 object sprite types (desks, server racks, forklifts, fume hoods, stamping presses) with kitbashed and hand-drawn pieces filling every gap in the packs
 - 16-bit character sprites composited from generator layers at runtime, shared by the player and NPCs
 - Any object without a sprite falls back to the original 4px-rectangle drawers, so partial coverage was always shippable
+
+**A synthesized audio engine:**
+- Chiptune-style music and every sound effect generated live with Web Audio, with an original title theme and regional exploration tracks
+- Independent music and effects muting, saved volume, and playback that suspends when the tab is hidden
 
 **An IP-safe encounter system:**
 - Encounters are JSON templates with `PLACEHOLDER` stubs
@@ -133,14 +164,16 @@ Each facility has 4-5 interconnected rooms, 14 encounters, AI-generated scene il
 
 ## How Long It Took
 
-About two weeks of part-time work for the original game: 8 facilities, 100+ encounters, the programmatic rendering engine, AI-generated art assets, a built-in map editor, and a polished game loop with story mode progression. The tileset redemption arc—rooms, sprites, character creator, NPC wardrobe—was a later two-day sprint, verified end-to-end with scripted Playwright walkthroughs of every zone in every facility before it shipped.
+About two weeks of part-time work for the original game: 8 facilities, 100+ encounters, the programmatic rendering engine, AI-generated art assets, a built-in map editor, and a polished game loop with story mode progression. The tileset redemption arc—rooms, sprites, character creator, NPC wardrobe—was a later two-day sprint, verified end-to-end with scripted Playwright walkthroughs of every zone in every facility before it shipped. A world-life pass in July added NPC movement, lighting and equipment effects, and a September polish-and-audit pass added the RPG presentation, a new audio engine and a full play-through review.
 
-Claude Code handled roughly 90% of the implementation. I drove architecture decisions, art direction, and all the iteration on visual style. The lesson that took two attempts to learn: pixel art tilesets aren't inherently incoherent—*mixing* them is. One artist, shadowless sprites, runtime shadows, and integer scaling turned the approach I'd written off into the best-looking version of the game.
+Claude Code handled roughly 90% of the original implementation; the September polish and review was done with OpenAI's Codex, with Claude running QA agents alongside. I drove architecture decisions, art direction, and all the iteration on visual style. The lesson that took two attempts to learn: pixel art tilesets aren't inherently incoherent—*mixing* them is. One artist, shadowless sprites, runtime shadows, and integer scaling turned the approach I'd written off into the best-looking version of the game.
 
 ## Tech Stack
 
 - **Frontend**: Vite + React + TypeScript, fully client-side, hosted on Vercel
 - **Rendering**: HTML5 Canvas compositing LimeZu 16px tilesets at 2x integer scale, with runtime-computed shadows and a programmatic `fillRect` fallback for anything without a sprite
+- **Audio**: Web Audio API synthesis for all music and effects, with no audio assets
+- **Testing**: Playwright suites for facility entry (Chromium and Firefox), gameplay and report logic, and scene rendering
 - **Characters**: LimeZu character-generator layers composited into sprite sheets at runtime—one pipeline for the player, the creator preview, and every NPC
 - **State Management**: React Context + useReducer (no external libraries)
 - **AI Art Pipeline**: Replicate MCP (FLUX 1.1 Pro Ultra) + Stability AI MCP for the title screen, encounter scenes, victory/game over screens
@@ -159,6 +192,8 @@ Claude Code handled roughly 90% of the implementation. I drove architecture deci
 
 5. **Cross-platform rendering**: Small things bite hard. Windows doesn't render flag emojis natively, so country flags on the world map showed up as two-letter codes on half our users' machines. Solved it with Twemoji SVGs from a CDN. Encounter data validation silently dropped scenarios with mismatched category names—25 encounters across 3 facilities were invisible until we wrote validation scripts to catch them.
 
+6. **Making a polish pass safe**: A big visual and audio pass broke the most basic thing, entering a facility. The cause was a Firefox-only audio API crash, not the layout I first suspected. The answer was the regression suites above, a bug report that named the browser, and treating "the model said it works" as unverified until a test in the target browser agrees.
+
 ## Outcome
 
-A complete, playable EHS compliance training game. Eight facilities across three continents, each with unique environments, jurisdiction-specific regulations, and AI-generated encounter illustrations—now rendered in proper 16-bit tile art, with a character creator whose preview is pixel-identical to the sprite you play. An auditor can play through all eight in story mode, building credibility from facility to facility, and walk away with a working mental model of Enhesa's regulatory categories—without once opening a training manual.
+A complete, playable EHS compliance training game. Eight facilities across three continents, each with unique environments, jurisdiction-specific regulations, and AI-generated encounter illustrations—now rendered in proper 16-bit tile art, with a character creator whose preview is pixel-identical to the sprite you play, a living, lit world with its own soundtrack, and a regression suite behind it. An auditor can play through all eight in story mode, building credibility from facility to facility, and walk away with a working mental model of Enhesa's regulatory categories—without once opening a training manual.
