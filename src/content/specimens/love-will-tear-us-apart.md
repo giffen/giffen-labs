@@ -5,7 +5,7 @@ classification: Proximity Application
 habitat: Prototype / Pre-launch
 firstObserved: '2026'
 status: dormant
-heroImage: /images/specimens/love-will-tear-us-apart-hero.png
+heroImage: /images/specimens/v2/love-will-tear-us-apart.webp
 platform:
 - mobile-app
 - location-services

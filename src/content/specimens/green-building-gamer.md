@@ -5,7 +5,7 @@ classification: Gamified Certification Training
 habitat: Web — Gulf Region pilot
 firstObserved: '2026'
 status: active
-heroImage: /images/specimens/green-building-gamer-hero.png
+heroImage: /images/specimens/v2/green-building-gamer.webp
 platform:
 - game
 - education

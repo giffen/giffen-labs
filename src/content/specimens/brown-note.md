@@ -5,7 +5,7 @@ classification: Mobile Application
 habitat: App Store / Google Play
 firstObserved: '2026'
 status: active
-heroImage: /images/specimens/brown-note-hero.png
+heroImage: /images/specimens/v2/brown-note.webp
 platform:
 - mobile
 - gamification

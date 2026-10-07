@@ -5,7 +5,7 @@ classification: Drummer Timing Trainer
 habitat: Prototype
 firstObserved: '2026'
 status: active
-heroImage: /images/specimens/automatic-pocket-hero.png
+heroImage: /images/specimens/v2/automatic-pocket.webp
 platform:
 - mobile
 - audio

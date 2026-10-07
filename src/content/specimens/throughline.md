@@ -5,7 +5,7 @@ classification: Music Recommendation Graph
 habitat: throughline.giffen.me
 firstObserved: '2026'
 status: active
-heroImage: /images/specimens/throughline-hero.png
+heroImage: /images/specimens/v2/throughline.webp
 platform:
 - music
 - graph-db

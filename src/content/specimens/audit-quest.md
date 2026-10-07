@@ -5,7 +5,7 @@ classification: Compliance Training Game
 habitat: Browser · React + Canvas
 firstObserved: '2026'
 status: shipped
-heroImage: /images/specimens/audit-quest-hero.png
+heroImage: /images/specimens/v2/audit-quest.webp
 platform:
 - game
 - education

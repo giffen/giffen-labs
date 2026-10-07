@@ -1,0 +1,80 @@
+{
+  "generationMethod": "Built-in image_gen",
+  "stylePrompt": "Use case: illustration-story. Asset type: finished landscape illustration for a personal project field-guide website, 3:2 aspect ratio, high detail. Create one museum-quality naturalist illustration plate, drawn by a skilled human scientific illustrator in fine dark sepia dip-pen ink, varied delicate line weight, precise crosshatching and stippling with restrained translucent watercolor. Warm pale ivory parchment (#f5f0e8), quiet subtle paper fibers, very subtle foxing only near outer edges. Palette strictly dark brown ink, warm ochre, muted olive green, and cream; generous clean negative space. Refined late-19th-century natural history atlas, tactile and intimate, contemporary editorial clarity. One clearly composed main subject, all objects completely within frame, comfortable 8% margins, detailed enough for a full-size plate but instantly readable as a 350px thumbnail. Soft pigment, crisp drawing; no glossy 3D, photorealism, cartoon, vector clip-art, harsh black outlines, artificial glow, heavy staining, ornate borders, page curl, drop shadows, watermark, lettering, words, numbers, labels, arrows, or fake handwriting. The website supplies all titles and captions.",
+  "assets": [
+    {
+      "slug": "brown-note",
+      "alt": "Three woodland mushrooms connected by a web of mycelium beneath the soil.",
+      "prompt": "Subject: A beautiful intimate mycological specimen study of three warm brown woodland mushrooms growing from one small section of earth. One larger cap on left, two smaller mushrooms nearby with gracefully curved stems, a fine cutaway into the soil reveals the delicate interconnected web of pale ochre mycelium joining their roots. A restrained small fern and tiny moss patches in muted olive around the soil. Concept: quiet companionship and an invisible network of support, tender and gently humorous, not medical. Precise gill anatomy and fine stippled soil. Main specimen fills the center with open parchment all around, no diagram grid.",
+      "image": "public/images/specimens/v2/brown-note.webp"
+    },
+    {
+      "slug": "throughline",
+      "alt": "Vinyl records linked by a winding botanical thread, beside a tuning fork.",
+      "prompt": "Subject: THROUGHLINE, a music discovery graph that reveals the path between songs. Draw an elegant branching constellation of five small vintage vinyl records, their grooves finely etched, linked by one continuous fine ochre thread in an organically curving musical phrase. Two endpoint records slightly larger, three smaller intermediate records. A beautifully drawn tuning fork and a small resonant sound-wave engraving nestle among the lower branches as secondary study details. Record labels are unlettered muted olive and warm ochre circles. Compose as a coherent airy specimen study, asymmetrically balanced across the landscape page, NOT a diagram grid. The connections should feel like discovering a hidden musical lineage.",
+      "image": "public/images/specimens/v2/throughline.webp"
+    },
+    {
+      "slug": "love-will-tear-us-apart",
+      "alt": "Two brass pocket compasses connected by a thread that forms a sound wave.",
+      "prompt": "Subject: Two antique brass pocket compasses lying open in a graceful diagonal arrangement, each with one tiny olive leaf enclosed beneath the glass. Their needles gently point toward one another. A single slender ochre thread connects them in a loose heart-like curve without becoming a literal heart icon; near the joining point the thread becomes a few delicate musical waveform ripples. Concept: a song playing when two people draw near. Exquisite engraved brass rims, precise needle geometry, unlettered dial faces with only subtle radial tick marks, two distinct complete instruments and generous paper space. Keep the visual tender, spare, poetic, elegantly balanced.",
+      "image": "public/images/specimens/v2/love-will-tear-us-apart.webp"
+    },
+    {
+      "slug": "green-building-gamer",
+      "alt": "A cutaway courtyard building with a planted roof, solar panel, wind tower, and water cistern.",
+      "prompt": "Subject: A finely detailed architectural cutaway study of one small contemporary Gulf courtyard building that works with its environment. Warm limestone walls, shaded deep arches, traditional wind-catcher tower, small rooftop solar panel, olive-green planted roof and one palm in the courtyard. Ground cutaway reveals a small rainwater cistern and roots, with restrained fine blue-free sepia water lines. Three-quarter axonometric view on an isolated small terrain specimen, no horizon or surrounding city. Precise credible architectural drawing and delicate washes, the environmental systems visually legible without annotations. A beautiful little building one wants to explore.",
+      "image": "public/images/specimens/v2/green-building-gamer.webp"
+    },
+    {
+      "slug": "automatic-pocket",
+      "alt": "A cutaway wooden snare drum with drumsticks and a pendulum metronome.",
+      "prompt": "Subject: An exquisitely drawn wooden snare drum, warm amber maple shell and fine brass hardware, in three-quarter view, with a small carefully rendered cutaway revealing the stretched snare wires beneath. Two clean straight wooden drumsticks resting diagonally beside it. One slender wooden pendulum metronome stands just behind, pendulum off-center as if keeping time. Make the drum dominant and sculptural through elegant engraving hatching, light ochre washes and accurate elliptical geometry. Quiet little motion arcs around the metronome pendulum, with no ticks or labels. A spare instrument study, no scattered extra parts.",
+      "image": "public/images/specimens/v2/automatic-pocket.webp"
+    },
+    {
+      "slug": "8-bit-drum-kit",
+      "alt": "An acoustic drum kit with a small vintage game controller.",
+      "prompt": "Subject: A beautifully observed small acoustic drum kit presented as a single charming specimen: one warm ochre wooden bass drum facing the viewer, one mounted tom, a smaller snare on its stand, one hi-hat and one ride cymbal on graceful brass stands, all distinct with mechanically plausible joints. Three-quarter front view, one pair of sticks rests on the snare. In the lower corner a tiny ivory vintage game-controller study with a simple unlettered cross pad and two olive circular buttons subtly signals the playable digital instrument. Delicate pen engraving, muted watercolor, precise elliptical drum heads and cymbals, harmonious arrangement, generous parchment margins. Keep the controller secondary and small. No person, stage, audience or large shadows.",
+      "image": "public/images/specimens/v2/8-bit-drum-kit.webp"
+    },
+    {
+      "slug": "just-do-something",
+      "alt": "A wooden artist’s mannequin stretching beside a desk and a sand timer.",
+      "prompt": "Subject: A delicately engraved articulated wooden artist's mannequin stepping away from a modest little desk and doing a relaxed standing overhead stretch, arms raised naturally, anatomically coherent limbs and hands, one foot lightly lifting. The mannequin is the central full-body subject. Beside it a small simple brass sand timer with ochre sand measures a short movement break. The edge of a minimal wooden chair and desk appears small in the background as context, not a room scene. Warm encouraging energy, unhurried small movements, carefully observed wood joints, subtle olive notebook resting on the desk with no text. Airy balanced specimen study, not a workout infographic.",
+      "framingEdit": "Use case: precise-object-edit. Image 1 is the edit target. Improve only the framing of this finished naturalist illustration. Pull the viewpoint back roughly 20% and complete any objects currently cut off so the ENTIRE still-life fits comfortably within the image with at least 8% uninterrupted pale parchment margin on ALL FOUR SIDES. Keep the same 3:2 landscape format, all existing subjects, the beautiful sepia pen engraving and watercolor, palette, paper, proportions, and overall arrangement. Do not add subjects, text, borders or decorations. Every hand, paper, leaf, furniture leg and object must be entirely visible inside the frame. Preserve the fine drawing quality. A clean complete specimen plate ready to mount on a website.",
+      "image": "public/images/specimens/v2/just-do-something.webp"
+    },
+    {
+      "slug": "daily-prophet",
+      "alt": "Sun, moon, and botanical tarot cards resting on an open journal.",
+      "prompt": "Subject: An intimate still life of three beautifully illustrated antique tarot cards slightly fanned on an open cream-paged field journal. The foremost card shows a finely engraved warm ochre sun with a delicate face; the second a slim crescent moon against muted olive; the third a tiny starry botanical sprig. Cards have thin simple ink borders with absolutely no names, numbers, letters or pseudo-text. The journal has blank paper and a slender ochre ribbon bookmark winding gently toward a small dried olive sprig. A contemplative daily ritual, beautifully detailed paper edges and ink engravings, warm quiet morning atmosphere, all objects centered with generous parchment margins.",
+      "image": "public/images/specimens/v2/daily-prophet.webp"
+    },
+    {
+      "slug": "enforcement-actions-scraper",
+      "alt": "Environmental records passing through a brass sieve into organized archive trays.",
+      "prompt": "Subject: A Victorian naturalist's archival collecting apparatus, an elegant visual metaphor for gathering and sorting scattered environmental records. Several loose cream documents funnel toward a central large fine brass sieve mounted on two slim supports above three neatly organized shallow oak archive trays. A small brass magnifying glass rests over a leaf pressed on the foremost paper. A few muted olive leaves accompany the papers, connecting the archive to environmental observation. Clear readable flow from scattered papers to organized trays, no arrows or literal text. Mechanical precision and lovingly drawn woodgrain, fine mesh and folded paper. Restrained single coherent still life, not a complex factory or a diagram grid.",
+      "framingEdit": "Use case: precise-object-edit. Image 1 is the edit target. Improve only the framing of this finished naturalist illustration. Pull the viewpoint back roughly 20% and complete any objects currently cut off so the ENTIRE still-life fits comfortably within the image with at least 8% uninterrupted pale parchment margin on ALL FOUR SIDES. Keep the same 3:2 landscape format, all existing subjects, the beautiful sepia pen engraving and watercolor, palette, paper, proportions, and overall arrangement. Do not add subjects, text, borders or decorations. Every hand, paper, leaf, furniture leg and object must be entirely visible inside the frame. Preserve the fine drawing quality. A clean complete specimen plate ready to mount on a website.",
+      "image": "public/images/specimens/v2/enforcement-actions-scraper.webp"
+    },
+    {
+      "slug": "privacy-proxy",
+      "alt": "A sealed letter passing through a brass mesh filter to a stack of clean papers.",
+      "prompt": "Subject: A meticulously drawn antique brass document-filtering apparatus, a mechanical privacy gate. One folded cream letter with an olive wax seal on the left; a delicate upright fine-mesh brass screen in an oak base in the center, with a small closed keyhole-shaped lock on its edge; one orderly stack of clean blank papers emerging on the right. A fine ochre line connects the path through the apparatus, with no arrows. Portray safeguarding and selective passage, with exquisite metal mesh, wood grain and folded-paper details. Use three substantial simple forms in a strong triangular composition, small olive sprig at base only, plenty of open parchment. No readable paper text, shields, dogs, digital symbols or ornate architecture.",
+      "image": "public/images/specimens/v2/privacy-proxy.webp"
+    },
+    {
+      "slug": "audit-quest",
+      "alt": "Miniature industrial sites along a route on a folded map, with an auditor pawn and checklist.",
+      "prompt": "Subject: An exquisitely illustrated miniature world of industrial exploration: a folded blank field map with three tiny distinct industrial facility models arranged along a winding ochre route. A brick works with chimney, a small cylindrical storage-tank facility, and a warehouse with sawtooth roof; one tiny wooden game pawn with a satchel stands near the first site. A small brass magnifying glass and simple olive clipboard with three drawn check marks sit beside the map, both secondary. Concept: an auditor's global compliance quest, learning by exploring facilities. Isometric miniature architecture, precise pen-and-watercolor detail, playful but mature, no pollution smoke, weapons or fantasy castles. Everything completely contained within broad pale parchment margins; no words, legends or map labels.",
+      "image": "public/images/specimens/v2/audit-quest.webp"
+    },
+    {
+      "slug": "edgewood-library",
+      "alt": "A shared tool cabinet connected to two miniature townhouses.",
+      "prompt": "Subject: An inviting miniature neighborhood tool library rendered as a naturalist's cabinet study. A small open oak tool cabinet at the center contains one neatly coiled cord, one hand drill, a hammer and garden trowel, all individually recognizable, drawn with exquisite wood and metal texture. A modest hand-held circular saw rests safely on a lower shelf, blade partly covered by its guard. Two tiny warm brick townhouse models, one on each side, connected to the cabinet by a single loose ochre thread, suggesting borrowing among neighbors. A small maple sprig in muted olive anchors the lower edge. A warm thoughtful community still life, balanced with plenty of open parchment, credible tools, no labels, people, storefront text or clutter.",
+      "image": "public/images/specimens/v2/edgewood-library.webp"
+    }
+  ]
+}

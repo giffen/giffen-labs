@@ -5,7 +5,7 @@ classification: Compliance Intelligence Pipeline
 habitat: Internal API · 23 sources, 16 jurisdictions
 firstObserved: '2026'
 status: in-progress
-heroImage: /images/specimens/enforcement-actions-scraper-hero.png
+heroImage: /images/specimens/v2/enforcement-actions-scraper.webp
 platform:
 - scraping
 - node.js

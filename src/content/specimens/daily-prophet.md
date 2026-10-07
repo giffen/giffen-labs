@@ -5,7 +5,7 @@ classification: Reading Companion
 habitat: Personal use
 firstObserved: '2025'
 status: dormant
-heroImage: /images/specimens/daily-prophet-hero.png
+heroImage: /images/specimens/v2/daily-prophet.webp
 platform:
 - mobile-app
 - ai-integration

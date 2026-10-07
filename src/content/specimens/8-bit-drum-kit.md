@@ -5,7 +5,7 @@ classification: Audio Instrument
 habitat: Workshop drawer
 firstObserved: '2026'
 status: shipped
-heroImage: /images/specimens/8-bit-drum-kit-hero.png
+heroImage: /images/specimens/v2/8-bit-drum-kit.webp
 platform:
 - web-audio
 - sprite-animation

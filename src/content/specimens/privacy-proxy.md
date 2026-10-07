@@ -5,7 +5,7 @@ classification: AI Architecture Pattern
 habitat: Personal finance · portable to regulated domains
 firstObserved: '2026'
 status: in-progress
-heroImage: /images/specimens/privacy-proxy-hero.png
+heroImage: /images/specimens/v2/privacy-proxy.webp
 platform:
 - privacy
 - llm

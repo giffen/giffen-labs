@@ -5,7 +5,7 @@ classification: Wellness / Behavioural
 habitat: Idea, mostly
 firstObserved: '2025'
 status: dormant
-heroImage: /images/specimens/just-do-something-hero.png
+heroImage: /images/specimens/v2/just-do-something.webp
 platform:
 - mobile-app
 - health-wellness

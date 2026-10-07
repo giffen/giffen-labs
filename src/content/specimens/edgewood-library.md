@@ -5,7 +5,7 @@ classification: Community Lending App
 habitat: Private — Toronto townhouse complex
 firstObserved: '2025'
 status: dormant
-heroImage: /images/specimens/edgewood-library-hero.png
+heroImage: /images/specimens/v2/edgewood-library.webp
 platform:
 - community
 - sharing-economy
