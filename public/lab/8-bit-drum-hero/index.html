@@ -8,7 +8,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
     body {
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -19,6 +19,7 @@
     }
 
     .game-container {
+      flex-shrink: 0;
       display: flex;
       gap: 30px;
       align-items: flex-start;
@@ -954,9 +955,18 @@
       });
     });
 
+    // Scale the fixed-size layout down to fit smaller frames (e.g. the specimen page embed)
+    const gameContainer = document.querySelector('.game-container');
+    function fitToFrame() {
+      const s = Math.min(1, innerWidth / gameContainer.offsetWidth, innerHeight / gameContainer.offsetHeight);
+      gameContainer.style.transform = s < 1 ? `scale(${s})` : '';
+    }
+    window.addEventListener('resize', fitToFrame);
+
     // Initialize
     updateUI();
     setFrame(0);
+    fitToFrame();
   </script>
 </body>
 </html>

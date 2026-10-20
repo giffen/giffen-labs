@@ -1,20 +1,23 @@
 ---
 title: 8-Bit Drum Kit
 specimenNumber: '06'
-classification: Audio Instrument
+classification: Rhythm Game
 habitat: Workshop drawer
 firstObserved: '2026'
 status: shipped
-heroImage: /images/specimens/v2/8-bit-drum-kit.webp
+url: https://giffenlabs.ca/lab/8-bit-drum-hero-ii/
+heroImage: /images/specimens/v2/8-bit-drum-kit-ii.webp
 platform:
 - web-audio
+- canvas
 - sprite-animation
 - 8-bit
+- rhythm-game
 - ai-experiment
 - music
 images: []
-excerpt: An interactive drum kit with sprite animations - a nostalgic experiment in
-  AI-assisted web development
+excerpt: An afternoon drum-game experiment, rebuilt from scratch less than a year
+  later by a newer model - both versions playable side by side
 ---
 
 ## The Experiment
@@ -63,6 +66,87 @@ Open the drum kit and bash away on your keyboard. The animation glitch adds char
   <iframe
     src="/lab/8-bit-drum-hero/index.html"
     title="8-Bit Drum Hero"
+    loading="lazy"
+    allow="autoplay; fullscreen"
+  ></iframe>
+</div>
+
+## Second Observation
+
+The notes above end with a wish list: actual songs, drum tracks to play along with, a proper rhythm game. Less than a year later I handed the old file to Claude Opus 5.5 in Claude Code with one instruction: rebuild it to spec. Same constraint as the original, one self-contained HTML file. The plate at the top got redrawn to match. The kit on the left stops at ninety percent.
+
+### The Last 1%, Found
+
+The jitter I never solved wasn't in the code.
+
+Claude's first theory was a CSS mismatch in how the sprite sheet was positioned. It checked that in a headless browser and it was wrong: the script resets the position on load, so nothing jumps there. So it froze the animation timers and screenshotted each of the four frames in place on the stage:
+
+![The original's four sprite frames, rendered in place on the stage](/images/specimens/8-bit-drum-kit/original-frames.png)
+
+Each frame is a separate AI drawing. The kit changes size and position from one frame to the next, and in the second frame the bass drum vanishes entirely. Across the four frames the drummer's head wanders 62 pixels sideways and 25 up and down, on a 350-pixel stage. The animation code was doing exactly what it was told. No amount of iterating on timing could fix a sprite sheet whose frames don't line up, and a model that couldn't see the screen had no way to know that's where the problem lived.
+
+The rebuild doesn't use a sprite sheet. The drummer is drawn from code on a 72×64 pixel grid, with a small two-bone arm rig. Every pose is computed from the same shoulders and the same kit, so the frames can't drift:
+
+![The rebuilt drummer: idle, snare and kick, crash and hi-hat, tom](/images/specimens/8-bit-drum-kit/rebuild-frames.png)
+
+### What Else Was Wrong
+
+With the glitch explained, the scoring had problems of its own:
+
+- **Hit windows were measured in pixels, not time.** ±40 pixels is ±133ms at 90 BPM but ±86ms at 140, so the game got stricter as it got faster, for no reason.
+- **The scoring line wasn't the drawn line.** Notes were judged 25 pixels below the hit line on screen. At 90 BPM, a "perfect" meant hitting about 83ms late.
+- **No music.** Notes moved by frame time, and there was nothing to play along to except the notes themselves: one two-bar pattern on loop.
+
+Re-reading my own notes against the code turned up a correction too. The sections above describe six pads with a clap, invisible hit zones over the sprite, and a base64-embedded sprite. The build embedded above has none of those. It's a five-lane note highway, and the sprite is a separate 1.4 MB PNG.
+
+### What the Rebuild Is
+
+- **Four original songs**, all chiptune, all synthesized live with Web Audio: *Big Money Beat* (the original groove, now with a bass line, as the tutorial), *Disco Lemonade* (116 BPM, four on the floor), *Overworld Shuffle* (104 BPM, swung) and *Final Boss* (152 BPM). Bass, lead and arpeggios, no audio files.
+- **Three difficulties per song**, generated from one chart. Easy keeps the quarter notes and drops the hi-hat, Medium drops the sixteenths, Hard is everything.
+- **Timing on the audio clock.** Hits are judged in milliseconds (±35 perfect, ±75 great, ±120 good) against the moment the note comes out of the speakers, using Web Audio's output timestamp rather than the frame rate. A calibration screen measures headphone or Bluetooth lag and takes it off.
+- **A Rock Band layout.** Four pads and a kick bar across the highway (D F J K and Space), a perspective highway, a count-in, combo multipliers, and a hype meter that tips into Fever: double points, rainbow rails, sunglasses.
+- **A drummer who reacts.** Arms cross over when the snare and hi-hat land together, the kick foot presses, the cymbals rock, he nods on the beat, and his eyebrows go up when you miss.
+- **A results screen with a timing histogram**, so you can see whether you rush or drag.
+- **Free play with a metronome.** Your hits drift up the highway so you can see your own groove, with a readout of how far off the click you are.
+- **Practice speeds** from 50 to 100%, a portrait layout and multi-touch pads for phones, keyboard-driven menus, and saved best scores.
+
+### How It Was Checked
+
+Claude drove headless Chrome with Playwright: screenshots of every screen at this page's embed size, at desktop size and on a phone; an autoplay run of *Final Boss* on Hard to a full combo (343 notes); and a timing harness that fires key presses at set offsets from every note of *Big Money Beat* on Hard:
+
+| Key presses | Result (246 notes) |
+|---|---|
+| On time | 246 perfect, average +2ms |
+| 55ms late | 246 great, average +57ms |
+| 95ms early | 246 good, average −92ms |
+| 55ms late, calibrated to +55ms | 246 perfect, average +2ms |
+| Every fifth note skipped | 196 perfect, 50 misses |
+
+The swung song got the same treatment: all 254 notes of *Overworld Shuffle* on Hard landed perfect.
+
+None of that says whether it's fun. That still takes a person with a keyboard.
+
+### Then and Now
+
+| | Then | Now |
+|---|---|---|
+| Built with | Claude Opus | Claude Opus 5.5 in Claude Code |
+| Files | 27 KB of HTML and a 1.4 MB sprite PNG | One 72 KB HTML file, no assets |
+| Music | None | Four original songs, synthesized live |
+| Charts | One two-bar loop | Four songs, three difficulties each |
+| Timing | Pixels, driven by frame time | Milliseconds, on the audio clock |
+| Hit window | ±40px (±133ms at 90 BPM, ±86ms at 140) | ±35 / 75 / 120ms at any tempo |
+| Drummer | Four AI-drawn frames that don't line up | A rig drawn in code |
+| The last 1% | Unsolved | Found. It was the sprite sheet. |
+
+## Try the Rebuild
+
+Click into the game first so it gets your keyboard, or [open it full window](/lab/8-bit-drum-hero-ii/index.html). D, F, J and K are snare, hi-hat, tom and crash. Space is the kick. On a phone, the four lanes are pads and tapping the stage plays the kick.
+
+<div class="lab-embed lab-embed--fullbleed">
+  <iframe
+    src="/lab/8-bit-drum-hero-ii/index.html"
+    title="Drum Hero II"
     loading="lazy"
     allow="autoplay; fullscreen"
   ></iframe>
