@@ -26,13 +26,15 @@ Automatic Pocket is a practice app for bass players. You pick a groove, put your
 
 No extra gear needed. The drums play in your headphones, your bass goes through your amp (or you play it unplugged), and the phone's mic listens.
 
+When you don't want a score, **Just drums** plays the groove with nothing listening, on headphones or the phone speaker.
+
 ## How It Got Here
 
 This specimen has been two different animals.
 
 In February it was a **drummer** timing trainer, built in one evening by Claude Code from a 375-line brief. The brief was good and the demo was impressive. The app wasn't good. On a real iPhone the audio jittered and it couldn't reliably hear drum hits. A native Swift rewrite over the summer got it as far as TestFlight, and then it sat in the drawer.
 
-In October I turned it into a **bass** app. I'm a beginner bassist, and I'd been running scales over 4/4 drum tracks and wanted to know whether I was actually locked in or just felt like it. The name still fit. Nothing else made the trip, and the old React Native code is deleted.
+In October I turned it into a **bass** app. I'm a beginner bassist, and I'd been running scales over 4/4 drum tracks and wanted to know whether I was actually locked in or just felt like it. The name still fit. Nothing else made the trip, and the old React Native code is deleted. How the pivot went, including the week the app said I couldn't play, is in [The Scoring Was the Bug](/journal/the-scoring-was-the-bug).
 
 ## The Kick Game
 
@@ -57,7 +59,7 @@ The results screen leads with the score, then one takeaway line ("Took 13 bars t
 - **Hearing a bass through a phone mic.** Legato bass notes barely change the overall level, so the simple volume-spike detection that works for drums fails on bass. The detector looks for sudden spectral change instead: a 1024-point FFT every 2.7 ms, measured against each frequency bin's own noise floor so a quiet unplugged bass and a loud amp behave the same. Each attack is then pinned down to about 1 ms.
 - **Confirming the note.** Finger noise on a ringing string, fret buzz and the click of muting a note all look like plucks to that detector. So each candidate waits about 45 ms and checks whether the bass band (40 Hz–1 kHz) actually rose. On a clip of real playing this keeps all 32 clear plucks and drops 11 of 14 impostors.
 - **Latency calibration.** For each output (wired, USB-C, Bluetooth), the app plays clicks, hears them back through the mic and measures the round trip. Bluetooth calibration runs longer and fits a trend line, because some receivers add more delay the longer they play.
-- **Headphones required.** On the phone speaker, the app's own kick drum would cover the very note it's asking you to play.
+- **Headphones for scoring.** On the phone speaker, the app's own kick drum would cover the very note it's asking you to play. Just drums doesn't listen, so it plays on the speaker.
 
 ## Field Notes
 
@@ -70,7 +72,7 @@ The honest limits, as of today:
 
 ## Status
 
-In progress. The bass version (3.0.0) is on TestFlight, with 88 automated tests passing, including my own recorded takes as fixtures. It isn't on the App Store yet. Before launch it needs a final on-device pass, an iPad layout, the App Store listing and a price.
+In progress. The bass version (3.0.0) is on TestFlight, with more than 90 automated tests, including my own recorded takes as fixtures. It isn't on the App Store yet. The App Store listing is written. Before launch it still needs a final on-device pass, an iPad layout and a price.
 
 After launch: a jam mode (pick a key and a progression, play over drums and keys, no scoring), a muting trainer, and a step editor for your own beats.
 
