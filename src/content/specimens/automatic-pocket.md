@@ -76,47 +76,6 @@ After launch: a jam mode (pick a key and a progression, play over drums and keys
 
 ---
 
-## Privacy Policy
+## The app
 
-**Last updated: October 29, 2026**
-
-Automatic Pocket is developed by Giffen Labs. This privacy policy explains how the app handles your data.
-
-### Data We Collect
-
-**Microphone audio.** The app uses your device's microphone during practice sessions and audio setup, to hear the notes you play and score your timing. Audio is processed on your device in real time and is never sent anywhere.
-
-**Session recordings (optional, off by default).** If you turn on "Keep session recordings" in Audio setup, the app saves the microphone audio from each session, along with its timing data, on your device. It keeps the 20 most recent. A recording leaves your device only if you choose to share it from the results screen.
-
-**Session data.** Training results (groove, tempo, scores, timestamps) are stored locally on your device. This data never leaves your device.
-
-**Settings.** Your preferences (groove, tempo, strictness, calibration and other options) are stored locally on your device.
-
-### Data We Do Not Collect
-
-- No personal information (name, email, phone number)
-- No location data
-- No analytics or tracking
-- No advertising identifiers
-- No data shared with third parties
-- No server-side data collection of any kind
-
-### Third-Party Services
-
-Automatic Pocket does not use any third-party analytics, advertising or tracking services. The drum samples are bundled with the app, and the app works entirely offline after installation.
-
-### Data Retention
-
-All data is stored locally on your device. Uninstalling the app removes all stored data, including any session recordings. There is no account system and no server-side data to delete.
-
-### Children's Privacy
-
-Automatic Pocket does not knowingly collect any personal information from children. The app has no user accounts, no social features and no data collection.
-
-### Changes to This Policy
-
-If this policy changes, the updated version will be posted here with a new "last updated" date.
-
-### Contact
-
-Questions about this privacy policy can be directed to: **hello@giffen.me**
+The app's own page, with setup help and support, is at [giffenlabs.ca/automatic-pocket](/automatic-pocket). It collects no data; the [privacy policy](/automatic-pocket/privacy) has the details.
