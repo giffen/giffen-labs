@@ -1,6 +1,7 @@
 ---
 title: The Dimension Spotify Can't Measure
 date: '2026-04-12'
+specimens: [throughline]
 excerpt: Before I bring a graph-database approach to production regulatory data, I
   wanted to validate the model on a domain I understand at gut level. So I built it
   on my music library. Here's what I learned about graphs — and why it changes how

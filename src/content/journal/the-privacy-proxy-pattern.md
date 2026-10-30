@@ -1,6 +1,7 @@
 ---
 title: The Privacy Proxy Pattern
 date: '2026-03-17'
+specimens: [privacy-proxy]
 excerpt: I wanted Claude to analyze my bank statements. I wasn't going to paste my
   SIN into an API call. So I built a local sanitization proxy that strips PII before
   it leaves my network. Here's the pattern, the tradeoffs, and where it falls short.

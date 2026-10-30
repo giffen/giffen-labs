@@ -31,7 +31,7 @@ This project was a departure from my usual B2B work. I wanted to explore:
 
 - **B2C with gamification**: Sticker collections, nugget economy, trust scores, and reward loops that drive engagement without exploiting users
 - **Mobile development**: My first React Native app, built with Expo alongside a Django web version
-- **AI-assisted engineering**: ~90% of the code was written by Claude, with me acting as PM/tech lead. I wrote about the full process in [the case study](/journal/building-brown-note).
+- **AI-assisted engineering**: ~90% of the code was written by Claude, with me acting as PM/tech lead. I wrote about the full process in [Building an App in 2018 vs 2026](/journal/building-an-app-then-vs-now).
 
 ## Design Philosophy
 
@@ -74,4 +74,4 @@ Building this responsibly meant tackling some tricky problems:
 
 ## Status
 
-Live at [brownnote.app](https://brownnote.app) with the mobile app available on iOS and Android. Read the [full case study](/journal/building-brown-note) for the build breakdown, architecture decisions, and costs.
+Live at [brownnote.app](https://brownnote.app) with the mobile app available on iOS and Android. The build, the costs and what happened after launch are in the Field Journal entries below.

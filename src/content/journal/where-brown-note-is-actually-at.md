@@ -1,6 +1,7 @@
 ---
 title: Where Brown Note Is Actually At
 date: '2026-10-09'
+specimens: [brown-note]
 excerpt: Eight months after launch, Brown Note has 55 real users and about three of them show up in a given week. Two podcasts and a listing on the Crohn's & Colitis Foundation site didn't change that. Here are the real numbers, what I think is actually broken, and the redesign I'm about to do.
 ---
 

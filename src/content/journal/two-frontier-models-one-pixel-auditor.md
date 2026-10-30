@@ -1,6 +1,7 @@
 ---
 title: Two Frontier Models, One Pixel Auditor
 date: '2026-10-06'
+specimens: [audit-quest]
 excerpt: I pointed the newest models from OpenAI and Anthropic at the same game, a retro EHS audit RPG, and let them build, test and critique each other's work. What they were good at, where they failed, and what I'd do differently.
 ---
 

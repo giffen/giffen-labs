@@ -7,7 +7,7 @@ excerpt: 'The old model was clear: PMs write tickets, designers make mocks, engi
   the new team looks like.'
 ---
 
-*This is part 3 of a three-part series on how AI is reshaping product management. [Part 1](/writing/beyond-agile) covers why agile needs to evolve, and [Part 2](/writing/the-comet-problem) covers the urgency gap.*
+*This is part 3 of a three-part series on how AI is reshaping product management. [Part 1](/journal/beyond-agile) covers why agile needs to evolve, and [Part 2](/journal/the-comet-problem) covers the urgency gap.*
 
 ## Code Is Automated. Thinking Isn't.
 
@@ -131,4 +131,4 @@ You don't. You need a problem you understand, taste in what good looks like, and
 
 So build something.
 
-*This is the final part of a three-part series. [Part 1: Beyond Agile](/writing/beyond-agile) explores why our current processes need to evolve. [Part 2: The Comet Problem](/writing/the-comet-problem) makes the case for urgency.*
+*This is the final part of a three-part series. [Part 1: Beyond Agile](/journal/beyond-agile) explores why our current processes need to evolve. [Part 2: The Comet Problem](/journal/the-comet-problem) makes the case for urgency.*

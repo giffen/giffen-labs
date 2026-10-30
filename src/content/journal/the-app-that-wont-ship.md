@@ -1,6 +1,7 @@
 ---
 title: 'The App That Won''t Ship: Why Love Will Tear Us Apart Is Stuck'
 date: '2026-04-16'
+specimens: [love-will-tear-us-apart]
 excerpt: I've been building an 8-bit app that plays a song when you're near someone
   you've designated a lover, a friend, or an enemy. The concept is charming. The build
   is stuck. Here's why proximity is the hardest product surface I've worked on, and

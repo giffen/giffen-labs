@@ -1,6 +1,7 @@
 ---
 title: When Two Prototypes Collide
 date: '2026-03-11'
+specimens: [enforcement-actions-scraper]
 excerpt: My colleague and I had been building the same thing without knowing it. She
   had the analytical depth — severity scoring, outlier detection, GDPR coverage. I
   had the infrastructure — 23 scrapers, a PostgreSQL pipeline, a React frontend. When

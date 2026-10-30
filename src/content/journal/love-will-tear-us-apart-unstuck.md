@@ -1,6 +1,7 @@
 ---
 title: Love Will Tear Us Apart, Unstuck
 date: '2026-10-29'
+specimens: [love-will-tear-us-apart]
 excerpt: In April I wrote about the app I couldn't ship. Proximity was too hard to test alone, iOS was hostile to the whole idea, and the music APIs didn't want it to exist. Nine days of rebuilding later it's on TestFlight with its App Store listing filled in. Almost none of the April problems got solved. They got designed out.
 ---
 

@@ -12,7 +12,7 @@ excerpt: Niels Pflaeging's Time-Oriented Software Development framework argues t
 
 Niels Pflaeging recently shared two pieces with me that stopped me in my tracks. The first is [BetaCodex White Paper #26](https://betacodex.org/white-papers/paper/introducing-time-oriented-software-development-26), which introduces Time-Oriented Software Development (TOSD). The second is his Substack piece, ["Placing Software Development in the Hands of Development Teams Is a Bad Mistake."](https://nielspflaeging.substack.com/p/placing-software-development-in-the)
 
-I'd just finished publishing a [three-part series](/writing/beyond-agile) on how AI is reshaping product teams. Reading Pflaeging's work felt like finding someone who'd been digging a tunnel from the other side of the mountain and broken through to the same cavern.
+I'd just finished publishing a [three-part series](/journal/beyond-agile) on how AI is reshaping product teams. Reading Pflaeging's work felt like finding someone who'd been digging a tunnel from the other side of the mountain and broken through to the same cavern.
 
 We agree on almost everything that's broken. We disagree on why it's finally going to change. I think we're both right, and the combination is more interesting than either argument alone.
 
@@ -20,7 +20,7 @@ We agree on almost everything that's broken. We disagree on why it's finally goi
 
 The diagnosis is almost identical.
 
-**Agile drifted from its principles.** Pflaeging calls out the movement for producing "little progress in how software development is organized" while getting lost in peripheral debates about story formats, scaling frameworks, and role definitions. In [Beyond Agile](/writing/beyond-agile), I make the same argument: we kept the vocabulary and lost the philosophy. Standups became status reports. Sprints became mini-waterfalls. The manifesto imagined something fast and human. We built something slow and bureaucratic.
+**Agile drifted from its principles.** Pflaeging calls out the movement for producing "little progress in how software development is organized" while getting lost in peripheral debates about story formats, scaling frameworks, and role definitions. In [Beyond Agile](/journal/beyond-agile), I make the same argument: we kept the vocabulary and lost the philosophy. Standups became status reports. Sprints became mini-waterfalls. The manifesto imagined something fast and human. We built something slow and bureaucratic.
 
 **The real bottleneck is coordination, not code.** Pflaeging cites Harvard research showing that coding isn't the limiting factor. Requirements gathering, design decisions, code review, testing, deployment, and cross-team coordination are where the time goes. I've been arguing the same thing from the AI angle: when code automation compresses the build cycle, the bottleneck shifts from "can we build it" to "should we build it." Same observation, different lens.
 
@@ -28,7 +28,7 @@ The diagnosis is almost identical.
 
 **Roles serve the process, not the work.** Pflaeging wants to eliminate Scrum Masters and Product Owners entirely. I argue that AI compresses those roles naturally because smaller teams need less coordination overhead. Different mechanism, same outcome: the roles that exist to manage complexity disappear when you reduce the complexity.
 
-**Developers should be business people.** This is Pflaeging's most provocative point. Dissolve dev teams. Embed developers in business-focused cells. Make them "business people who happen to develop software" with direct responsibility for customer outcomes. In [The New Team](/writing/the-new-team), I argue the inverse: PMs and designers are becoming builders. We're converging on the same blurred boundary from opposite directions.
+**Developers should be business people.** This is Pflaeging's most provocative point. Dissolve dev teams. Embed developers in business-focused cells. Make them "business people who happen to develop software" with direct responsibility for customer outcomes. In [The New Team](/journal/the-new-team), I argue the inverse: PMs and designers are becoming builders. We're converging on the same blurred boundary from opposite directions.
 
 ## Where We Diverge
 

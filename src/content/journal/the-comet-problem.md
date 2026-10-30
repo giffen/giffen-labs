@@ -8,7 +8,7 @@ excerpt: There's a moment in Halt and Catch Fire where the Comet team is working
   toward.
 ---
 
-*This is part 2 of a three-part series on how AI is reshaping product management. [Part 1](/writing/beyond-agile) covers why agile needs to evolve, and [Part 3](/writing/the-new-team) covers what teams will look like on the other side.*
+*This is part 2 of a three-part series on how AI is reshaping product management. [Part 1](/journal/beyond-agile) covers why agile needs to evolve, and [Part 3](/journal/the-new-team) covers what teams will look like on the other side.*
 
 ## The Scene That Stuck With Me
 
@@ -48,7 +48,7 @@ Think about where this lands:
 
 **Middleware and integration products.** If your product exists because two systems don't talk to each other and you sit in between, AI agents that can navigate both systems directly threaten your entire value proposition.
 
-**Process management tools.** This connects directly to [Part 1](/writing/beyond-agile). If your product helps teams manage sprints, track velocity, or coordinate handoffs, and AI collapses the team size and build cycle, you're managing a process that's shrinking.
+**Process management tools.** This connects directly to [Part 1](/journal/beyond-agile). If your product helps teams manage sprints, track velocity, or coordinate handoffs, and AI collapses the team size and build cycle, you're managing a process that's shrinking.
 
 None of these are bad products. The teams building them aren't doing anything wrong. That's what makes it so hard to see.
 
@@ -122,4 +122,4 @@ The Comet team's story is a cautionary tale. But the broader story of that era, 
 
 That's the opportunity right now. Don't be Comet. But don't be afraid of the shift either. Run toward it.
 
-*Next up: [Part 3](/writing/the-new-team) looks at what product teams actually look like on the other side of this shift.*
+*Next up: [Part 3](/journal/the-new-team) looks at what product teams actually look like on the other side of this shift.*

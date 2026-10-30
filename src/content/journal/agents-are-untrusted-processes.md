@@ -1,6 +1,7 @@
 ---
 title: Agents Are Untrusted Processes
 date: '2026-03-17'
+specimens: [privacy-proxy]
 excerpt: Your AI agent can read your filesystem, execute shell commands, and make
   network requests. You're trusting it because the system prompt says 'be helpful.'
   That's not security — that's hope. Here's what actual isolation looks like.
@@ -133,4 +134,4 @@ Agent security needs the same shift. From "tell the agent not to do bad things" 
 Your agent is not your friend. It's a process. Treat it like one.
 ---
 
-*This post describes the security architecture of [NanoClaw](/work/nanoclaw), my personal AI agent. The privacy proxy pipeline mentioned here is documented in [The Privacy Proxy Pattern](/writing/the-privacy-proxy-pattern) and [Privacy Proxy](/work/privacy-proxy).*
+*This post describes the security architecture of NanoClaw, my personal AI agent. The privacy proxy pipeline mentioned here is documented in [The Privacy Proxy Pattern](/journal/the-privacy-proxy-pattern) and [Privacy Proxy](/specimens/privacy-proxy).*

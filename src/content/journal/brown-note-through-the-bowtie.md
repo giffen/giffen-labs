@@ -1,6 +1,7 @@
 ---
 title: Brown Note Through the Bowtie
 date: '2026-10-10'
+specimens: [brown-note]
 excerpt: I ran Brown Note's numbers through Winning by Design's Bowtie, a model built for recurring revenue businesses. It made the problem obvious. Brown Note doesn't have an awareness problem. It has an onboarding problem, and nothing to do unless you're having a bad day.
 ---
 

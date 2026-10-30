@@ -1,6 +1,7 @@
 ---
 title: The Bridge Machine
 date: '2026-07-06'
+specimens: [throughline]
 excerpt: I finished Throughline months ago. It was technically complete, live, and
   quietly not landing. The fix wasn't more engineering — it was changing the question
   the product asks. A note on the difference between a finished feature and a product

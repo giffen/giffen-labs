@@ -1,6 +1,7 @@
 ---
 title: The Pressure Test
 date: '2026-04-14'
+specimens: [green-building-gamer]
 excerpt: I've been shipping three to five days of work per evening on a real project
   and the bottleneck isn't typing speed or context length. It's whether I spent ten
   minutes pressure-testing the plan before I started. The agents that stress-test
@@ -8,7 +9,7 @@ excerpt: I've been shipping three to five days of work per evening on a real pro
   one I almost skipped the first time.
 ---
 
-Last night I shipped Release B of [Green Building Gamer](/work/green-building-gamer) in about three hours. It's a project I'm building with DNICHE Partners - their idea, their design, my build. The release was scoped as six working days of work. A new Lightning Round game mode, 87 new T/F questions, five database migrations, a separate leaderboard system, firm-branded PDF reports. Everything built, tested, committed, deployed to production. One evening.
+Last night I shipped Release B of [Green Building Gamer](/specimens/green-building-gamer) in about three hours. It's a project I'm building with DNICHE Partners - their idea, their design, my build. The release was scoped as six working days of work. A new Lightning Round game mode, 87 new T/F questions, five database migrations, a separate leaderboard system, firm-branded PDF reports. Everything built, tested, committed, deployed to production. One evening.
 
 This isn't me bragging about Claude Code. A lot of that six-day estimate was padding - a real development team would have shipped it in three. But even three days compressed into three hours is a 10x multiplier, and I can feel what the multiplier actually comes from.
 

@@ -1,6 +1,7 @@
 ---
 title: 'Building an App in 2018 vs 2026: $18K and 20 Months vs $354 and 24 Days'
 date: '2026-03-01'
+specimens: [brown-note]
 excerpt: In 2018, four of us spent $18,000 and 20 months building an iOS app called
   Flusher. In 2026, I spent $354 and 24 days building Brown Note - a more complex
   app, on both platforms, by myself. Both apps were born from the same disease. The
@@ -81,7 +82,7 @@ It has a gamification layer. Nuggets (points) for helping others, a sticker shop
 
 Me. And Claude.
 
-I acted as PM and tech lead - making architecture decisions, reviewing every line of code, testing on physical devices, and providing all the domain knowledge and product taste. Claude wrote roughly 90% of the code. I've written about that dynamic in detail in my [Brown Note case study](/writing/building-brown-note).
+I acted as PM and tech lead - making architecture decisions, reviewing every line of code, testing on physical devices, and providing all the domain knowledge and product taste. Claude wrote roughly 90% of the code. I've written about that dynamic in detail in my Brown Note case study.
 
 ### The Budget
 

@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, reference, z } from "astro:content";
 import { glob } from "astro/loaders";
 
 const specimens = defineCollection({
@@ -26,6 +26,8 @@ const journal = defineCollection({
     date: z.string(),
     excerpt: z.string(),
     heroImage: z.string().optional(),
+    // Specimens this entry is about. Their pages list it under Field Journal.
+    specimens: z.array(reference("specimens")).default([]),
   }),
 });
 

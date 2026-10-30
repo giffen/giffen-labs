@@ -7,7 +7,7 @@ excerpt: The Agile Manifesto got it right. Then we spent twenty years building p
   to actually practice what the Manifesto preached.
 ---
 
-*This is part 1 of a three-part series on how AI is reshaping product management. [Part 2](/writing/the-comet-problem) covers the urgency gap, and [Part 3](/writing/the-new-team) covers what teams will look like on the other side.*
+*This is part 1 of a three-part series on how AI is reshaping product management. [Part 2](/journal/the-comet-problem) covers the urgency gap, and [Part 3](/journal/the-new-team) covers what teams will look like on the other side.*
 
 ## The Manifesto Was Right
 
@@ -98,4 +98,4 @@ The question isn't whether agile needs to evolve. It does. The question is wheth
 
 I know which one I'm betting on.
 
-*Next up: [Part 2](/writing/the-comet-problem) looks at why most teams are heads-down building while the ground is shifting under them.*
+*Next up: [Part 2](/journal/the-comet-problem) looks at why most teams are heads-down building while the ground is shifting under them.*

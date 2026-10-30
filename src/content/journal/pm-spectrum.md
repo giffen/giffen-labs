@@ -94,7 +94,7 @@ In the old model, a PM's primary influence challenge was rallying a team of five
 
 This is the axis that makes the AI-era PM fundamentally different from every PM that came before. It's not "can you code." It's: can you take an idea from concept to working prototype using AI-assisted development?
 
-I [built Brown Note](/writing/building-brown-note) — a full mobile app with a Django backend, REST API, push notifications, and cross-platform deployment — in three weeks for $350. I'm not an engineer. I'm a PM who learned to direct AI tools effectively. That's Technical Building.
+I [built Brown Note](/specimens/brown-note) — a full mobile app with a Django backend, REST API, push notifications, and cross-platform deployment — in three weeks for $350. I'm not an engineer. I'm a PM who learned to direct AI tools effectively. That's Technical Building.
 
 Kim Faura [reports](https://www.linkedin.com/pulse/three-finger-kim-what-happened-when-i-stopped-typing-started-faura-yense) a PM who refactored 80% of a front-end in four days. Engineers had estimated four months. Boris Cherny at Anthropic deliberately underfunds headcount to force AI adoption. The PM who can ship a prototype themselves collapses the entire handoff chain from idea to validation.
 
@@ -189,7 +189,7 @@ I built this to be used, not just read. Here's how.
 
 ## The Shape Is Changing
 
-Ravi Mehta built the best PM competency framework of the past decade. What I've outlined here isn't a replacement — it's an evolution, driven by the same forces that are [reshaping product teams](/writing/the-new-team) and [redefining what's automatable](/writing/how-much-can-we-automate).
+Ravi Mehta built the best PM competency framework of the past decade. What I've outlined here isn't a replacement — it's an evolution, driven by the same forces that are [reshaping product teams](/journal/the-new-team) and [redefining what's automatable](/journal/how-much-can-we-automate).
 
 The old shape had twelve competencies across four balanced areas. The new shape has four axes weighted by a spectrum that every PM needs to navigate. The execution layer that defined half the PM role is being compressed by AI. What remains — Customer Closeness, Strategic Direction, Organizational Influence, and the entirely new axis of Technical Building — is more human, more valuable, and harder to fake than anything on the old chart.
 
