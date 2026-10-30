@@ -7,6 +7,8 @@ excerpt: I've been building an 8-bit app that plays a song when you're near some
   why I'm still going to finish it.
 ---
 
+*Update, October 2026: it got unstuck. The follow-up is [Love Will Tear Us Apart, Unstuck](/journal/love-will-tear-us-apart-unstuck).*
+
 ## The Pitch
 
 Two phones. Two people. One song.

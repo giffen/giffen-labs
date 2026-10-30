@@ -1,127 +1,96 @@
 ---
 title: Automatic Pocket
 specimenNumber: '05'
-classification: Drummer Timing Trainer
-habitat: Prototype
+classification: Bass Timing Trainer
+habitat: iPhone · Pre-launch
 firstObserved: '2026'
-status: active
-heroImage: /images/specimens/v2/automatic-pocket.webp
+status: in-progress
+heroImage: /images/specimens/v2/automatic-pocket-bass.webp
 platform:
-- mobile
-- audio
-- Expo
-- TypeScript
+- iOS
+- Swift
+- SwiftUI
+- AVAudioEngine
+- DSP
 - Claude Code
-- agentic AI
 - music-tech
 images: []
-excerpt: A drummer timing trainer built in one evening with agentic Claude Code —
-  from brief to fully functional app in a single session.
-url: https://github.com/giffen/automatic-pocket
+excerpt: A practice app for bass players. Play a note on every kick drum and an
+  analog needle shows how locked in you are. It started life as a drummer trainer
+  that never quite worked.
 ---
 
-## The Problem
+## What It Is
 
-Drummers rely on the click track as a crutch. We play perfectly in time when we can hear it — but on stage, when the monitor mix drops out, the singer calls an audible, or a stick breaks mid-fill, our internal clock drifts and nobody tells us. Existing metronome apps either play a click (which everyone already has) or drop bars of silence without measuring what happens during the gap. None of them combine the drop-out metronome with real-time microphone listening and scoring. And none of them simulate the cognitive chaos of a live performance.
+Automatic Pocket is a practice app for bass players. You pick a groove, put your headphones in and play along. There's one rule: **play a bass note on every kick drum.** A needle meter swings to each of those notes and shows whether you landed early, late or on it. Whatever you play between the kicks is up to you, and the app ignores it.
 
-I wanted to build an app that trains the thing behind the click — the internal clock that keeps you locked in when everything else falls apart.
+No extra gear needed. The drums play in your headphones, your bass goes through your amp (or you play it unplugged), and the phone's mic listens.
 
-## The Experiment
+## How It Got Here
 
-The real experiment here wasn't the app itself. It was the process.
+This specimen has been two different animals.
 
-I wrote a detailed project brief — 375 lines covering the problem, competitive landscape, feature spec, audio engine architecture, scoring algorithm, data schema, design direction, monetization strategy, and six development phases. Then I handed it to Claude Code with one instruction:
+In February it was a **drummer** timing trainer, built in one evening by Claude Code from a 375-line brief. The brief was good and the demo was impressive. The app wasn't good. On a real iPhone the audio jittered and it couldn't reliably hear drum hits. A native Swift rewrite over the summer got it as far as TestFlight, and then it sat in the drawer.
 
-> Read this brief. Build the whole thing autonomously, phase by phase. Don't ask me questions — make reasonable decisions and document your assumptions. Start now.
+In October I turned it into a **bass** app. I'm a beginner bassist, and I'd been running scales over 4/4 drum tracks and wanted to know whether I was actually locked in or just felt like it. The name still fit. Nothing else made the trip, and the old React Native code is deleted.
 
-I wanted to see how far agentic AI could take a non-trivial project — one with real-time audio scheduling, microphone onset detection, band-pass filtering, scoring algorithms, and a multi-screen native app — without me writing a single line of code.
+## The Kick Game
 
-## What Got Built
+The groove already knows where its kicks are, so the app never has to guess what you meant to play.
 
-The session ran through five development phases in a single evening:
+- **The rule.** Your kick note is the note closest to each kick, within 75 ms (or half the gap to the next kick, if that's shorter). Every other note is free. Fills, walking lines and ghost notes cost you nothing.
+- **Lean is free, up to a point.** Players sit a little ahead of or behind the beat, often on purpose. The app takes your median offset (your lean) and lets up to 25 ms of it slide at the default Relaxed setting (15 ms at Normal, 8 ms at Tight). Only the excess counts.
+- **Spread is what's scored.** How tightly your kick notes cluster around your own spot, multiplied by the share of kicks you actually played.
+- **Live words.** LOCKED IN, RUSHING, DRAGGING or LOOSE, worked out from your last eight kick notes.
+- **Hide the kicks.** Ear-training mode removes the kick markers from the bar, so you have to hear them.
+- **Feel targets.** Push (−12 ms), Dead on, Laid back (+12 ms) or Deep (+25 ms). The scoring window centres on wherever you're aiming.
+- **Drummer tricks.** The drums drop out for a few bars (on a schedule or at random) so you have to hold the time yourself, or the drummer slowly drifts the tempo and you have to follow.
+- **Practice programs.** Lock in, Hold the time, Lay back, By ear, Follow the drummer, Ghost drummer. The first card on Home suggests one based on how your recent sessions went.
 
-**Phase 1: Core Metronome** — A full Expo (React Native) app with a tempo knob, time signature selector, subdivision control (quarter notes through 16ths), configurable bar breaks, and a Web Audio API engine with lookahead scheduling for sample-accurate click timing. Three screens: home, training, and results.
+The results screen leads with the score, then one takeaway line ("Took 13 bars to settle in. From bar 14 on you were at ±19 ms, which scores 80."), then every kick plotted by position in the bar, the notes a listener would actually hear as off, and the whole take bar by bar.
 
-**Phase 2: Listening + Scoring** — Microphone onset detection using Web Audio API's `AnalyserNode` with band-pass filtering for kick (60–130 Hz) and snare (301–750 Hz) frequency bands. An 8-beat calibration flow, RMS energy threshold detection, and a three-component scoring algorithm: drift (50%), variance (30%), and hit rate (20%).
+## Under the Hood
 
-**Phase 3: Data Persistence** — AsyncStorage session storage, settings persistence, session history screen, and real trend charts from stored data.
+- **Native Swift and SwiftUI**, iOS 17+, with no third-party dependencies. Audio runs on `AVAudioEngine`, the DSP on Accelerate's vDSP FFT, and the charts on Swift Charts.
+- **A recorded acoustic kit.** Ten grooves (Rock, Funk, Soul, Disco, Hip-Hop, Half-Time, One Drop, Shuffle, Jazz Swing, Sticks) played from 65 samples with velocity layers, so ghost notes are actually soft. The samples are [DRSKit](https://drumgizmo.org/wiki/doku.php?id=kits:drskit) by the DrumGizmo team and Jes Eiler of DRSDrums, used under CC BY 4.0. Each hit is trimmed to start within 0.3 ms of its first sample, because the drums are the timing reference.
+- **Sample-accurate playback.** The app computes the whole session's timeline before you press play. The audio thread just walks a preallocated array, with no locks and no memory allocation.
+- **Hearing a bass through a phone mic.** Legato bass notes barely change the overall level, so the simple volume-spike detection that works for drums fails on bass. The detector looks for sudden spectral change instead: a 1024-point FFT every 2.7 ms, measured against each frequency bin's own noise floor so a quiet unplugged bass and a loud amp behave the same. Each attack is then pinned down to about 1 ms.
+- **Confirming the note.** Finger noise on a ringing string, fret buzz and the click of muting a note all look like plucks to that detector. So each candidate waits about 45 ms and checks whether the bass band (40 Hz–1 kHz) actually rose. On a clip of real playing this keeps all 32 clear plucks and drops 11 of 14 impostors.
+- **Latency calibration.** For each output (wired, USB-C, Bluetooth), the app plays clicks, hears them back through the mic and measures the round trip. Bluetooth calibration runs longer and fits a trend line, because some receivers add more delay the longer they play.
+- **Headphones required.** On the phone speaker, the app's own kick drum would cover the very note it's asking you to play.
 
-**Phase 4: Pressure Mode** — Five levels of cognitive distraction overlays during silent bars. Level 1 flashes random numbers on screen. Level 2 shows a number to memorize before it fades. Level 3 throws math problems at you. Level 4 fires arrangement cues — "CRASH", "FILL!", "HALF TIME" — that you'd need to execute on a real gig. Level 5 is everything at once. A pressure resilience score rewards maintaining your pocket under load.
+## Field Notes
 
-**Phase 5: Polish + Monetization** — Tap tempo (tap the knob center), four click sound presets (Classic, Wood, Digital, Deep), a paywall screen with pricing, and a pro/free feature gating system.
+The honest limits, as of today:
 
-Final build: 770 modules, 8 routes, zero TypeScript errors.
-
-## How Agentic Claude Code Actually Works
-
-The interesting part isn't that it wrote code. It's *how* it managed a complex project.
-
-**It made architectural decisions.** The brief said "don't use setInterval for beat timing" — Claude chose a dual-engine approach: Web Audio API with lookahead scheduling on web (the gold standard for browser audio), and `requestAnimationFrame` with absolute timestamps on native. It documented the tradeoffs and limitations in a decisions log without being asked.
-
-**It parallelized work.** When building Phase 2, it spawned two agents simultaneously — one building the beat detector and scoring engine, the other updating the screens and hooks. Both completed and integrated cleanly.
-
-**It tested and fixed its own bugs.** After each phase, it ran `expo export --platform web` to verify compilation. When TypeScript typed routes didn't include a new screen, it diagnosed the issue and regenerated the route types. When a strict null check failed on the AudioContext, it applied a non-null assertion and explained why.
-
-**It knew when to mock.** In Phase 1, scoring didn't exist yet, so it generated plausible mock data for the drift bar and score history — then replaced every mock with real data in Phase 2 when the scoring engine was built.
-
-**It documented as it went.** After each phase, it updated `PROGRESS.md` with what was built, what worked, and known issues — and `DECISIONS.md` with architectural rationale. These weren't summaries — they were engineering docs I could hand to another developer.
-
-## The Audio Engine
-
-The most technically interesting piece is the audio scheduling. Browsers can't reliably time events with `setTimeout` — the event loop introduces jitter that's perceptible at musical tempos. The solution is the "lookahead" pattern: a scheduling loop runs every 25ms and queues clicks up to 100ms into the future using `AudioContext.currentTime`. The Web Audio API handles the actual timing at the hardware level.
-
-```typescript
-// Schedule all sub-beats that fall within the lookahead window
-while (this.nextSubBeatTime < engine.currentTime + this.LOOKAHEAD_WEB) {
-  this.scheduleSubBeat(this.nextSubBeatTime);
-  this.advanceSubBeat();
-  this.nextSubBeatTime += this.subBeatInterval;
-}
-```
-
-This gives sample-accurate timing with zero drift. The click sounds themselves are synthesized oscillators — 1200 Hz sine for accents, 800 Hz for normal beats, 1400 Hz for subdivisions — with exponential gain ramps for crisp transients.
-
-For onset detection, the microphone signal is split through two band-pass filters (kick and snare bands), run through `AnalyserNode` for RMS energy calculation, and matched against an expected beat grid. The BeatDetector shares the same `AudioContext` as the metronome engine so both systems are on the exact same time reference.
-
-## What I Learned
-
-**A good brief is the highest-leverage input.** The session worked because the brief was thorough — it covered not just *what* to build but *why*, with technical constraints, competitive context, and explicit non-goals. Claude didn't have to guess at the product vision.
-
-**Agentic AI is a force multiplier, not a replacement.** I didn't write code, but I wrote the brief, reviewed the architecture, and made the call to push to GitHub. The AI handled the implementation — which is exactly the part that would have taken me weeks of evenings to do myself.
-
-**The quality bar is real.** This isn't a demo or a toy. The audio engine uses the same scheduling pattern as professional DAWs. The onset detection pipeline is legitimate signal processing. The scoring algorithm is based on real synchronization-continuation task research. Claude didn't cut corners because the brief didn't give it permission to.
-
-**Pressure mode is backed by real neuroscience.** Dual-task interference studies show that cognitive load doesn't change *what* tempo you play — it makes you *less consistent*. That's the exact gap pressure mode trains against. The 2025 study with 103 participants confirmed that dual-tasking selectively hinders temporal stability in sub-second motor timing — but crucially, this decline is reduced following longitudinal training. It's trainable.
-
-## Tech Stack
-
-- **Framework**: Expo (SDK 54) with TypeScript, Expo Router
-- **Audio**: Web Audio API (AudioContext, OscillatorNode, AnalyserNode, BiquadFilterNode)
-- **UI**: React Native, react-native-svg, Animated API
-- **Storage**: AsyncStorage (sessions, settings, pro state)
-- **Detection**: Band-pass filtering + RMS energy onset detection via microphone
-- **Scoring**: Three-component weighted algorithm (drift, variance, hit rate)
-- **Design**: Dark theme (#0A0A0F), green/amber/red color system, SpaceMono font
+- **Detection has been verified on one bass**, mine, in quiet rooms. Amps, louder rooms and other players will need tuning.
+- **The grade is calibrated against one bassist.** Me, a beginner. My best take scores about 70 at Relaxed, because that's what it sounded like to me.
+- **Some Bluetooth receivers drift.** A NUX Mighty Plug Pro added close to a millisecond of delay every second until it levelled off around +65 ms. The app detects this during calibration and warns you, but it can't correct for it, because the drift changes from session to session.
+- **Hammer-ons and slides** may not register as new notes. Note length (whether you mute when you should) isn't scored yet.
 
 ## Status
 
-Live on the App Store for iOS. The entire app — from reading the brief to the final commit — was built in one evening with Claude Code acting as the sole developer. The full source is on [GitHub](https://github.com/giffen/automatic-pocket).
+In progress. The bass version (3.0.0) is running on my phone with 88 automated tests passing, including my own recorded takes as fixtures. It isn't on TestFlight or the App Store yet. Before launch it needs a final on-device pass, an iPad layout, the App Store listing and a price.
+
+After launch: a jam mode (pick a key and a progression, play over drums and keys, no scoring), a muting trainer, and a step editor for your own beats.
 
 ---
 
 ## Privacy Policy
 
-**Last updated: February 27, 2026**
+**Last updated: October 29, 2026**
 
 Automatic Pocket is developed by Giffen Labs. This privacy policy explains how the app handles your data.
 
 ### Data We Collect
 
-**Microphone audio** — The app accesses your device microphone during training sessions to detect drum hits and score your timing accuracy. Audio is processed entirely on-device in real time. No audio is recorded, stored, or transmitted.
+**Microphone audio.** The app uses your device's microphone during practice sessions and audio setup, to hear the notes you play and score your timing. Audio is processed on your device in real time and is never sent anywhere.
 
-**Session data** — Training session results (tempo, scores, timestamps) are stored locally on your device using AsyncStorage. This data never leaves your device.
+**Session recordings (optional, off by default).** If you turn on "Keep session recordings" in Audio setup, the app saves the microphone audio from each session, along with its timing data, on your device. It keeps the 20 most recent. A recording leaves your device only if you choose to share it from the results screen.
 
-**Settings** — Your preferences (tempo, time signature, subdivision, pressure level) are stored locally on your device.
+**Session data.** Training results (groove, tempo, scores, timestamps) are stored locally on your device. This data never leaves your device.
+
+**Settings.** Your preferences (groove, tempo, strictness, calibration and other options) are stored locally on your device.
 
 ### Data We Do Not Collect
 
@@ -134,15 +103,15 @@ Automatic Pocket is developed by Giffen Labs. This privacy policy explains how t
 
 ### Third-Party Services
 
-Automatic Pocket does not use any third-party analytics, advertising, or tracking services. The app functions entirely offline after installation.
+Automatic Pocket does not use any third-party analytics, advertising or tracking services. The drum samples are bundled with the app, and the app works entirely offline after installation.
 
 ### Data Retention
 
-All data is stored locally on your device. Uninstalling the app removes all stored data. There is no account system and no server-side data to delete.
+All data is stored locally on your device. Uninstalling the app removes all stored data, including any session recordings. There is no account system and no server-side data to delete.
 
 ### Children's Privacy
 
-Automatic Pocket does not knowingly collect any personal information from children. The app contains no user accounts, no social features, and no data collection.
+Automatic Pocket does not knowingly collect any personal information from children. The app has no user accounts, no social features and no data collection.
 
 ### Changes to This Policy
 
