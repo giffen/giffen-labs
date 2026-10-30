@@ -1,0 +1,12 @@
+{
+  "redirects": [
+    { "source": "/", "has": [{ "type": "host", "value": "automaticpocket.com" }], "destination": "https://giffenlabs.ca/automatic-pocket", "permanent": false },
+    { "source": "/support", "has": [{ "type": "host", "value": "automaticpocket.com" }], "destination": "https://giffenlabs.ca/automatic-pocket/support", "permanent": false },
+    { "source": "/privacy", "has": [{ "type": "host", "value": "automaticpocket.com" }], "destination": "https://giffenlabs.ca/automatic-pocket/privacy", "permanent": false },
+    { "source": "/:path*", "has": [{ "type": "host", "value": "automaticpocket.com" }], "destination": "https://giffenlabs.ca/automatic-pocket", "permanent": false },
+    { "source": "/", "has": [{ "type": "host", "value": "www.automaticpocket.com" }], "destination": "https://giffenlabs.ca/automatic-pocket", "permanent": false },
+    { "source": "/support", "has": [{ "type": "host", "value": "www.automaticpocket.com" }], "destination": "https://giffenlabs.ca/automatic-pocket/support", "permanent": false },
+    { "source": "/privacy", "has": [{ "type": "host", "value": "www.automaticpocket.com" }], "destination": "https://giffenlabs.ca/automatic-pocket/privacy", "permanent": false },
+    { "source": "/:path*", "has": [{ "type": "host", "value": "www.automaticpocket.com" }], "destination": "https://giffenlabs.ca/automatic-pocket", "permanent": false }
+  ]
+}

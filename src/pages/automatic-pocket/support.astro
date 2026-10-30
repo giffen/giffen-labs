@@ -1,0 +1,104 @@
+---
+import AutomaticPocketLayout from "../../layouts/AutomaticPocketLayout.astro";
+import SupportEmail from "../../components/SupportEmail.astro";
+---
+
+<AutomaticPocketLayout
+  title="Support"
+  description="Setting up Automatic Pocket, how the score works, and fixes for common problems."
+>
+  <p>
+    Questions, bugs or ideas: email <SupportEmail />. If it's about timing, say which headphones
+    you use.
+  </p>
+
+  <h2>Getting set up</h2>
+  <ol class="list-decimal">
+    <li>
+      <strong>Put headphones on.</strong> Sessions need them: on the device's speaker, the drums
+      cover up your notes.
+    </li>
+    <li>
+      <strong>Calibrate your headphones.</strong> Tap the audio row on the home screen to open Audio
+      setup. Don't wear the headphones for this: hold an earbud (or press a headphone cup) right
+      against the bottom of the phone, where the mic is, at medium volume. Tap Calibrate and keep
+      still while it plays clicks. Each pair of headphones keeps its own calibration, so do this
+      once for each.
+    </li>
+    <li>
+      <strong>Check the mic.</strong> In Audio setup, tap Start mic check and play a few notes. Set
+      Sensitivity so every note you play counts and nothing else does.
+    </li>
+    <li>
+      <strong>Place the phone.</strong> Put it between you and your amp, about an arm's length from
+      the speaker. Playing unplugged? Put it close to the strings. A USB audio interface, if you
+      have one, is used automatically.
+    </li>
+  </ol>
+
+  <h2>How the score works</h2>
+  <p>
+    For each kick, the app takes your closest note within 75 ms. Notes that aren't near a kick don't
+    count for or against you.
+  </p>
+  <p>
+    Sitting a little ahead of or behind the kick is free. Most players do it, and up to your
+    strictness setting (25 ms on Relaxed, 15 on Normal, 8 on Tight) it costs nothing. The feel
+    target moves where that spot is: laid back aims behind the kick, push ahead of it.
+  </p>
+  <p>
+    What's scored is how consistent you are around your own spot, times the share of kicks you
+    played. On Relaxed, kick notes that vary by about ±10 ms score in the 90s, ±20 ms around 78,
+    and ±30 ms around 62.
+  </p>
+
+  <h2>Common problems</h2>
+
+  <h3>"Plug in headphones to play"</h3>
+  <p>
+    The app won't start a session on the speaker, because the drums would drown out your bass in
+    the mic. Connect wired, USB-C or Bluetooth headphones.
+  </p>
+
+  <h3>It misses notes I play</h3>
+  <p>
+    Raise Sensitivity in Audio setup and use the mic check to confirm every note counts. Make sure
+    the app can use the mic: Settings › Automatic Pocket › Microphone. Moving the phone closer to
+    the amp or the strings helps too.
+  </p>
+
+  <h3>It counts notes I didn't play</h3>
+  <p>
+    Usually drums leaking from the headphones into the mic, or string noise. Closed-back headphones
+    or earbuds help, as does turning the drums down a little or lowering Sensitivity.
+  </p>
+
+  <h3>Every note looks early, or every note looks late</h3>
+  <p>
+    Calibrate the headphones you're using now. If you know you're on the kick and the app still
+    disagrees, use Fine-tune in Audio setup: slide right if it says you're behind.
+  </p>
+
+  <h3>A warning that your Bluetooth device keeps adding delay</h3>
+  <p>
+    Some Bluetooth devices add more delay the longer they play. One we tested drifted by about
+    65 ms over its first minute. The app can't correct a delay that keeps moving, so the later in a
+    session, the later your notes look. Use wired or USB-C headphones, or Bluetooth headphones
+    whose delay holds steady (AirPods did when we tested them). Calibration tells you which kind
+    you have.
+  </p>
+
+  <h3>The score seems low</h3>
+  <p>
+    The results screen shows where it went: kicks you missed, how far your notes spread around
+    your spot, and the notes a listener would actually hear as off. Relaxed is the most forgiving
+    strictness.
+  </p>
+
+  <h2>Credits</h2>
+  <p>
+    Drum samples from <a href="https://drumgizmo.org/wiki/doku.php?id=kits:drskit">DRSKit</a> by the
+    DrumGizmo team and Jes Eiler of DRSDrums, used under
+    <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+  </p>
+</AutomaticPocketLayout>

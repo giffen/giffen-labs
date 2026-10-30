@@ -1,0 +1,47 @@
+---
+import AutomaticPocketLayout from "../../layouts/AutomaticPocketLayout.astro";
+import SupportEmail from "../../components/SupportEmail.astro";
+---
+
+<AutomaticPocketLayout
+  title="Privacy policy"
+  description="Automatic Pocket collects no data. Audio is analysed on your device and never sent anywhere."
+>
+  <p class="label">Effective October 29, 2026</p>
+
+  <p>
+    Automatic Pocket doesn't collect, send or sell any information about you. There's no account,
+    no ads, no analytics and no tracking, and the app doesn't connect to the internet.
+  </p>
+
+  <h2>The microphone</h2>
+  <p>
+    The app uses the microphone only while a session, a mic check or a calibration is running, to
+    hear the notes you play or the calibration clicks. The sound is analysed on your device as it
+    comes in. It isn't sent anywhere, and it isn't saved unless you turn on session recordings.
+  </p>
+
+  <h2>Session recordings</h2>
+  <p>
+    Recordings are off unless you turn on Keep session recordings in Audio setup. When it's on, the
+    app saves what the mic heard during each session and how it scored it, on your device only. It
+    keeps the last 20 and deletes older ones. A recording leaves your device only if you share it
+    yourself from the results screen.
+  </p>
+
+  <h2>Your history and settings</h2>
+  <p>
+    Your scores, settings and headphone calibrations are stored on your device. Like other app data,
+    they're included in your device's backups to iCloud or your computer, which Apple's privacy
+    policy covers. Deleting the app deletes them.
+  </p>
+
+  <h2>Children</h2>
+  <p>The app collects nothing from anyone, children included.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, the new version will be posted here with a new effective date.</p>
+
+  <h2>Contact</h2>
+  <p>Andrew Giffen, Toronto. Email <SupportEmail />.</p>
+</AutomaticPocketLayout>

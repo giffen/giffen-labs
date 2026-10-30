@@ -1,0 +1,44 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+// The app's own pages: the App Store listing links to support and privacy.
+const pages = [
+  { href: "/automatic-pocket", label: "The app" },
+  { href: "/automatic-pocket/support", label: "Support" },
+  { href: "/automatic-pocket/privacy", label: "Privacy" },
+];
+const path = Astro.url.pathname.replace(/\/$/, "");
+---
+
+<BaseLayout title={path === "/automatic-pocket" ? "Automatic Pocket — Giffenlabs" : `${title} — Automatic Pocket — Giffenlabs`} description={description}>
+  <article class="max-w-3xl mx-auto px-5 sm:px-8 pt-14 pb-24">
+    <nav class="label-bark flex flex-wrap gap-x-6 gap-y-2" aria-label="Automatic Pocket">
+      {pages.map((p) => (
+        <a
+          href={p.href}
+          aria-current={path === p.href ? "page" : undefined}
+          class={`hover:text-[color:var(--color-ink)] transition-colors ${path === p.href ? "underline underline-offset-4 decoration-[color:var(--color-ochre)]" : ""}`}
+        >
+          {p.label}
+        </a>
+      ))}
+    </nav>
+
+    <h1 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl mt-6 leading-tight">
+      {title}
+    </h1>
+
+    <div class="ruled mt-8 mb-10"></div>
+
+    <div class="prose-field">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
