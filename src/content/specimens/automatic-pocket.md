@@ -2,7 +2,7 @@
 title: Automatic Pocket
 specimenNumber: '05'
 classification: Bass Timing Trainer
-habitat: iPhone · Pre-launch
+habitat: iPhone · TestFlight, pre-launch
 firstObserved: '2026'
 status: in-progress
 heroImage: /images/specimens/v2/automatic-pocket-bass.webp
@@ -70,7 +70,7 @@ The honest limits, as of today:
 
 ## Status
 
-In progress. The bass version (3.0.0) is running on my phone with 88 automated tests passing, including my own recorded takes as fixtures. It isn't on TestFlight or the App Store yet. Before launch it needs a final on-device pass, an iPad layout, the App Store listing and a price.
+In progress. The bass version (3.0.0) is on TestFlight, with 88 automated tests passing, including my own recorded takes as fixtures. It isn't on the App Store yet. Before launch it needs a final on-device pass, an iPad layout, the App Store listing and a price.
 
 After launch: a jam mode (pick a key and a progression, play over drums and keys, no scoring), a muting trainer, and a step editor for your own beats.
 
