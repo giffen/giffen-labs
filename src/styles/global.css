@@ -212,8 +212,16 @@
     margin: 0 0 1.1rem 1.25rem;
   }
 
+  /* Tailwind's preflight strips list markers; put them back for prose. */
+  .prose-field ul { list-style: disc; }
+  .prose-field ol { list-style: decimal; }
+
   .prose-field li {
     margin-bottom: 0.35rem;
+  }
+
+  .prose-field li::marker {
+    color: var(--color-ochre);
   }
 
   .prose-field table {
