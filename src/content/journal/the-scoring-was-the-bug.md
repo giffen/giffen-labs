@@ -5,6 +5,8 @@ specimens: [automatic-pocket]
 excerpt: Automatic Pocket started as a drummer trainer that never really worked. In October I turned it into a bass app. It took a week of evenings, one note that registered seven times, a Bluetooth amp that kept falling behind, and a scoring system that said I couldn't play. The fix for that last one wasn't better DSP. It was a different game.
 ---
 
+*Update, November 2026: Automatic Pocket is [on the App Store](https://apps.apple.com/app/automatic-pocket/id6759693937), free, for iPhone and iPad.*
+
 In February I had Claude Code build [Automatic Pocket](/specimens/automatic-pocket), a timing trainer for drummers, in one evening from a 375-line brief. I wrote it up as a story about agentic AI, and the story was true. The app was a different matter. On a real iPhone the audio jittered and it couldn't reliably hear a drum hit. A native Swift rewrite in the summer got it onto TestFlight, and then I stopped opening it.
 
 In October I turned it into a bass app. This is how that went, including the week I was fairly sure I was a bad bassist and it turned out the app was wrong.
