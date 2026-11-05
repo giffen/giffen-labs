@@ -319,6 +319,11 @@
     border: 0;
   }
 
+  .prose-field .lab-embed--video iframe {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
   /* Topographic-y faint background pattern for hero */
   .topo {
     background-image:
