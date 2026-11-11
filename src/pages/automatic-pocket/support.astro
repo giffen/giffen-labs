@@ -5,25 +5,57 @@ import SupportEmail from "../../components/SupportEmail.astro";
 
 <AutomaticPocketLayout
   title="Support"
-  description="Setting up Automatic Pocket, how the score works, and fixes for common problems."
+  description="Playing along with Automatic Pocket, setting up Score my timing, how the score works, and fixes for common problems."
 >
   <p>
-    Questions, bugs or ideas: email <SupportEmail />. If it's about timing, say which headphones
+    Questions, bugs or ideas: email <SupportEmail />. If it's about scoring, say which headphones
     you use.
   </p>
 
-  <h2>Getting set up</h2>
+  <h2>Playing along</h2>
   <ol class="list-decimal">
     <li>
-      <strong>Put headphones on.</strong> Sessions need them: on the device's speaker, the drums
+      <strong>Pick a beat and a tempo.</strong> Tap the beat's name on the home screen to see all 36,
+      and tap one to hear a few bars. Drag the tempo, use − and +, or tap Tap in time.
+    </li>
+    <li>
+      <strong>Press Play.</strong> After a count-in the drums play until you press Stop. The speaker
+      is fine; headphones are fine too.
+    </li>
+    <li>
+      <strong>Change things while it plays.</strong> Tap the beat's name to switch beats, the line
+      under it to change what the drummer does, and − or + for the tempo. The new drums pick up on
+      the same beat of the same bar.
+    </li>
+    <li>
+      <strong>Set up the drummer.</strong> The Fills, Drops out and Tempo drift tiles on the home
+      screen open The drummer: how often it fills and for how long, whether it switches to a B
+      section every 8 or 16 bars, whether it drops out, and whether it holds the tempo.
+    </li>
+    <li>
+      <strong>Make your own beats.</strong> Tap New beat under My beats, or press and hold a built-in
+      beat to start from a copy. Tap the grid to place hits; choose Ghost, Normal or Accent first
+      for how hard. The beat loops while you draw. Tap Save.
+    </li>
+  </ol>
+
+  <h2>Score my timing</h2>
+  <p>
+    Score my timing on the home screen is the optional exercise: play a bass note on every kick, and
+    the app listens through the microphone and shows how early or late each one was. It needs a
+    little setup the drums don't.
+  </p>
+  <ol class="list-decimal">
+    <li>
+      <strong>Put headphones on.</strong> Scoring needs them: on the device's speaker, the drums
       cover up your notes.
     </li>
     <li>
-      <strong>Calibrate your headphones.</strong> Tap the audio row on the home screen to open Audio
-      setup. Don't wear the headphones for this: hold an earbud (or press a headphone cup) right
-      against the bottom of the phone, where the mic is, at medium volume. Tap Calibrate and keep
-      still while it plays clicks. Each pair of headphones keeps its own calibration, so do this
-      once for each.
+      <strong>Calibrate your headphones.</strong> Tap the headphones button at the top of the home
+      screen to open Audio setup. Don't wear the headphones for this: hold an earbud (or press a
+      headphone cup) right against the bottom of the phone, where the mic is, at medium volume. Tap
+      Calibrate and keep still while it plays clicks. Each pair of headphones keeps its own
+      calibration, so do this once for each.
     </li>
     <li>
       <strong>Check the mic.</strong> In Audio setup, tap Start mic check and play a few notes. Set
@@ -33,6 +65,11 @@ import SupportEmail from "../../components/SupportEmail.astro";
       <strong>Place the phone.</strong> Put it between you and your amp, about an arm's length from
       the speaker. Playing unplugged? Put it close to the strings. A USB audio interface, if you
       have one, is used automatically.
+    </li>
+    <li>
+      <strong>Start a take.</strong> Tap Score my timing, pick a practice program or set the feel and
+      length yourself, and tap Start. A scored take plays the beat as written: no fills and no
+      switch-ups.
     </li>
   </ol>
 
@@ -54,11 +91,17 @@ import SupportEmail from "../../components/SupportEmail.astro";
 
   <h2>Common problems</h2>
 
-  <h3>"Start needs headphones"</h3>
+  <h3>I can't hear the drums</h3>
   <p>
-    The app won't start a scored session on the speaker, because the drums would drown out your bass
-    in the mic. Connect wired, USB-C or Bluetooth headphones. Just drums plays on the speaker, with no
-    scoring.
+    Check the volume, and whether the sound is going to headphones or a Bluetooth speaker you
+    forgot was connected.
+  </p>
+
+  <h3>"Scoring needs headphones"</h3>
+  <p>
+    The app won't start a scored take on the speaker, because the drums would drown out your bass
+    in the mic. Connect wired, USB-C or Bluetooth headphones. Press Play on the home screen to play
+    along on the speaker, with no scoring.
   </p>
 
   <h3>It misses notes I play</h3>
@@ -84,9 +127,9 @@ import SupportEmail from "../../components/SupportEmail.astro";
   <p>
     Some Bluetooth devices add more delay the longer they play. One we tested drifted by about
     65 ms over its first minute. The app can't correct a delay that keeps moving, so the later in a
-    session, the later your notes look. Use wired or USB-C headphones, or Bluetooth headphones
-    whose delay holds steady (AirPods did when we tested them). Calibration tells you which kind
-    you have.
+    take, the later your notes look. Use wired or USB-C headphones, or Bluetooth headphones whose
+    delay holds steady (AirPods did when we tested them). Calibration tells you which kind you
+    have. Playing along without a score isn't affected.
   </p>
 
   <h3>The score seems low</h3>
