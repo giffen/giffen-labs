@@ -5,7 +5,7 @@ specimens: [automatic-pocket]
 excerpt: On October 30 I wrote that the kick game was the app. Eleven days later I moved it behind a button. Automatic Pocket 4.0 is a drum machine first, because I play longer with a drummer than with a test.
 ---
 
-*Automatic Pocket 4.0 went to Apple for review on November 11. It's free, for iPhone and iPad, on the [App Store](https://apps.apple.com/app/automatic-pocket/id6759693937), where 3.0 stays until 4.0 is approved.*
+*Automatic Pocket 4.0 is out. It's free, for iPhone and iPad, on the [App Store](https://apps.apple.com/app/automatic-pocket/id6759693937).*
 
 On October 30 I published [a post](/journal/the-scoring-was-the-bug) about turning Automatic Pocket into a bass app. Most of it was about the scoring: how the app was sure I couldn't play, how the fix was a different game, and how I said "Kick scoring is the app now." It ended with me "most evenings, trying to get my best take past 70."
 

@@ -87,7 +87,7 @@ The honest limits, as of today:
 
 On the App Store since November 2, 2026, for iPhone and iPad. It's free, with no account and no in-app purchases. [Get it on the App Store](https://apps.apple.com/app/automatic-pocket/id6759693937).
 
-Version 4.0, the drum machine, went to Apple for review on November 11, 2026, under the new name Automatic Pocket: Drum Machine. Until it's approved, the App Store has 3.0, where Just drums is the button next to Start. The app has more than 150 automated tests, including my own recorded takes as fixtures.
+Version 4.0, the drum machine, came out on November 11, 2026, under the new name Automatic Pocket: Drum Machine. The app has more than 150 automated tests, including my own recorded takes as fixtures.
 
 Next: a jam mode (pick a key and a progression, play over drums and keys, no scoring) and a muting trainer.
 
