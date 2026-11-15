@@ -32,7 +32,7 @@ const formatDate = (date: string) =>
   new Date(date).toLocaleString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
 ---
 
-<BaseLayout title={`${data.title} — Specimen №${data.specimenNumber} — Giffenlabs`} description={data.excerpt}>
+<BaseLayout title={`${data.title} — Specimen №${data.specimenNumber} — Giffenlabs`} description={data.excerpt} image={data.heroImage}>
   <!-- Hero plate: framed like a magnified specimen card -->
   <section class="w-full bg-[color:var(--color-paper-deep)] border-b border-[color:var(--color-rule)] py-8 sm:py-14">
     <div class="max-w-5xl mx-auto px-4 sm:px-8">

@@ -1,5 +1,5 @@
 ---
-import { getCollection, render } from "astro:content";
+import { getCollection, getEntry, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
@@ -28,9 +28,13 @@ const formattedDate = new Date(data.date).toLocaleDateString("en-US", {
 });
 
 const minutesRead = remarkPluginFrontmatter?.minutesRead;
+
+// Link preview: the entry's own hero, else the plate of the specimen it's about.
+const specimen = data.specimens[0] && (await getEntry(data.specimens[0]));
+const previewImage = data.heroImage ?? specimen?.data.heroImage;
 ---
 
-<BaseLayout title={`${data.title} — Field Journal — Giffenlabs`} description={data.excerpt}>
+<BaseLayout title={`${data.title} — Field Journal — Giffenlabs`} description={data.excerpt} image={previewImage}>
   {data.heroImage && (
     <section class="w-full h-[60vh] bg-[color:var(--color-paper-deep)] overflow-hidden">
       <img src={data.heroImage} alt="" class="w-full h-full object-cover" />

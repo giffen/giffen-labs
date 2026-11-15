@@ -6,9 +6,16 @@ import Footer from "../components/Footer.astro";
 interface Props {
   title: string;
   description?: string;
+  // Link-preview image, a path under public/.
+  image?: string;
 }
 
-const { title, description = "Field notes from the build." } = Astro.props;
+const { title, description = "Field notes from the build.", image } = Astro.props;
+
+// giffenlabs.ca redirects to www, so previews point straight at www.
+const origin = "https://www.giffenlabs.ca";
+const url = new URL(Astro.url.pathname, origin).href;
+const imageUrl = image && new URL(image, origin).href;
 ---
 
 <!doctype html>
@@ -19,6 +26,15 @@ const { title, description = "Field notes from the build." } = Astro.props;
     <meta name="description" content={description} />
     <meta name="color-scheme" content="light" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:site_name" content="Giffenlabs" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    {imageUrl && <meta property="og:image" content={imageUrl} />}
+    <meta name="twitter:card" content={imageUrl ? "summary_large_image" : "summary"} />
+    <slot name="head" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

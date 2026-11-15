@@ -17,7 +17,8 @@ const pages = [
 const path = Astro.url.pathname.replace(/\/$/, "");
 ---
 
-<BaseLayout title={path === "/automatic-pocket" ? "Automatic Pocket — Giffenlabs" : `${title} — Automatic Pocket — Giffenlabs`} description={description}>
+<BaseLayout title={path === "/automatic-pocket" ? "Automatic Pocket — Giffenlabs" : `${title} — Automatic Pocket — Giffenlabs`} description={description} image="/images/automatic-pocket/og.jpg">
+  <meta slot="head" name="apple-itunes-app" content="app-id=6759693937" />
   <article class="max-w-3xl mx-auto px-5 sm:px-8 pt-14 pb-24">
     <nav class="label-bark flex flex-wrap gap-x-6 gap-y-2" aria-label="Automatic Pocket">
       {pages.map((p) => (
